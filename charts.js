@@ -533,14 +533,20 @@ function createDiseaseChart() {
                         font: { weight: 'bold' },
                     },
                     min: 2024,
-                    max: 2075,
+                    max: 2080,
                     grid: {
                         color: 'rgba(0, 0, 0, 0.05)',
+                    },
+                    ticks: {
+                        stepSize: 10,
                     },
                 },
                 y: {
                     grid: {
                         display: false,
+                    },
+                    ticks: {
+                        font: { size: 11 },
                     },
                 },
             },

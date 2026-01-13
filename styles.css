@@ -606,7 +606,8 @@ body {
 }
 
 .chart-tall canvas {
-    max-height: 500px;
+    max-height: 600px;
+    min-height: 500px;
 }
 
 .result-interpretation {
@@ -693,6 +694,23 @@ body {
     background: var(--primary);
     border-radius: 4px;
     opacity: 0.5;
+}
+
+.legend-bar-demo {
+    width: 60px;
+    height: 16px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+    border-radius: 4px;
+    border: 2px solid var(--primary);
+    opacity: 0.7;
+}
+
+.legend-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--neutral-500);
+    font-style: italic;
+    margin-top: var(--space-sm);
 }
 
 /* Uncertainty Section */
