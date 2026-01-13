@@ -1,13 +1,11 @@
 # GitHub Pages deployment workflow
-# Deploys the webpage directory to gh-pages branch
+# Deploys the root directory to GitHub Pages
 
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
-    paths:
-      - 'webpage/**'
   workflow_dispatch:
 
 permissions:
@@ -17,7 +15,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -32,7 +30,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './webpage'
+          path: '.'
 
   deploy:
     environment:
