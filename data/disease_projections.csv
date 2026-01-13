@@ -1,0 +1,13 @@
+disease,category,ai_cure_year,no_ai_cure_year,years_saved,prob_cure_2050,current_status,notes
+Breast Cancer (early stage),Cancer,2028,2035,7,100,Phase 3 trials for multiple AI-designed drugs,Detection and treatment both accelerating
+Lung Cancer,Cancer,2032,2045,13,85,Immunotherapy combinations showing promise,AI improving patient selection
+Pancreatic Cancer,Cancer,2038,2055,17,65,Early detection remains key challenge,AI for biomarker discovery
+Alzheimer's Disease,Neurodegenerative,2040,2065,25,64,Amyloid hypothesis being revised,AI for target identification critical
+Parkinson's Disease,Neurodegenerative,2035,2055,20,72,Gene therapy approaches advancing,AI for progression prediction
+ALS,Neurodegenerative,2042,2070,28,55,Complex multifactorial disease,AI for patient stratification
+Type 1 Diabetes,Metabolic,2033,2048,15,78,Stem cell and immunotherapy approaches,AI for immune modulation
+Cystic Fibrosis,Rare Genetic,2030,2042,12,90,Gene therapy showing success,CFTR modulators advancing
+Sickle Cell Disease,Rare Genetic,2028,2038,10,95,Gene editing therapies approved,AI for optimization
+HIV/AIDS (functional cure),Infectious,2032,2050,18,80,Reservoir elimination strategies,AI for latent cell identification
+Malaria (vaccine),Infectious,2027,2035,8,100,RTS S and R21 vaccines deployed,AI for epitope optimization
+Pandemic Preparedness,Preparedness,2026,2030,4,100,mRNA platform established,AI for rapid antigen design

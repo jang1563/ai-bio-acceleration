@@ -1,0 +1,13 @@
+intervention,category,cost_millions,roi_mean,roi_80ci_low,roi_80ci_high,tier,lead_actor,timeline_months,feasibility,precedent
+Expand Adaptive Trial Designs,Regulatory,250,20331,13491,28147,1,FDA + Congress,18-24,Medium,COVID-19 emergency adaptive trials
+Real-World Evidence Integration,Regulatory,500,12077,8014,16719,1,FDA,12-18,Medium,21st Century Cures Act
+Industry-Academia AI Partnerships,R&D,1000,9638,6395,13342,2,NIH + NSF,24-36,High,BRAIN Initiative model
+Target Validation Initiative,R&D,2000,5394,3579,7467,2,NIH,36-48,Medium,Cancer Moonshot
+Double AI Research Funding,Funding,5000,5140,3411,7115,2,Congress,12-24,Medium,CHIPS Act model
+Public Biobank Expansion,Infrastructure,1500,2847,1889,3940,3,NIH + CDC,48-60,High,UK Biobank success
+Regulatory Harmonization,Regulatory,300,2156,1431,2984,3,FDA + EMA + PMDA,24-36,Low,ICH guidelines
+AI Safety Standards,Regulatory,200,1823,1210,2523,3,FDA + NIST,18-24,Medium,EU AI Act
+Federated Learning Infrastructure,Infrastructure,800,1567,1040,2169,3,NIH + Private,36-48,Medium,Tech sector models
+Open Science Mandates,Policy,100,1234,819,1708,3,OSTP,12-18,High,NIH data sharing policy
+Clinical Trial Network,Infrastructure,1200,1089,723,1507,3,NIH + Industry,48-60,Medium,CTN model
+Compute Access Programs,Infrastructure,500,987,655,1366,3,NSF + DOE,24-36,High,XSEDE/ACCESS model
