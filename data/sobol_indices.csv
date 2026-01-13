@@ -1,0 +1,12 @@
+parameter,first_order_Si,total_order_STi,interaction,rank,interpretation
+g_ai,0.915,0.942,0.027,1,Dominant driver of variance; minimal interactions with other parameters
+p_phase2,0.045,0.058,0.013,2,Moderate effect on outcomes; some interaction with clinical multipliers
+M_max_cognitive,0.016,0.024,0.008,3,Minor direct effect; enables other AI mechanisms
+k_saturation,0.012,0.018,0.006,4,Affects timing of AI adoption curve peak
+M_max_clinical,0.009,0.015,0.006,5,Limited direct impact; interacts with trial success rates
+gamma_data,0.002,0.008,0.006,6,Negligible direct effect; enables AI effectiveness via data quality
+M_max_physical,0.001,0.005,0.004,7,Minimal impact; lab automation is not the bottleneck
+M_max_regulatory,0.0005,0.003,0.0025,8,Fixed regulatory timelines limit AI acceleration
+alpha_feedback,0.0003,0.002,0.0017,9,Feedback loops are weak in model structure
+qaly_per_cure,0.0001,0.001,0.0009,10,Only affects value calculation not discovery rate
+value_per_qaly,0.0001,0.001,0.0009,11,Only affects value calculation not discovery rate

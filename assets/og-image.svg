@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d2d2d;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2E86AB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a5a7a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-gradient)"/>
+
+  <!-- Decorative elements -->
+  <circle cx="1100" cy="100" r="200" fill="#2E86AB" opacity="0.1"/>
+  <circle cx="100" cy="530" r="150" fill="#F18F01" opacity="0.1"/>
+
+  <!-- Main title -->
+  <text x="60" y="120" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#ffffff">
+    AI-Accelerated Biological Discovery
+  </text>
+
+  <!-- Subtitle -->
+  <text x="60" y="170" font-family="Arial, sans-serif" font-size="24" fill="#2E86AB">
+    A Quantitative Model
+  </text>
+
+  <!-- Main stat box -->
+  <rect x="60" y="220" width="400" height="200" rx="16" fill="url(#accent-gradient)"/>
+
+  <text x="260" y="310" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    3.4x – 9.2x
+  </text>
+  <text x="260" y="360" font-family="Arial, sans-serif" font-size="20" fill="#ffffff" opacity="0.9" text-anchor="middle">
+    Acceleration by 2050
+  </text>
+  <text x="260" y="395" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" opacity="0.7" text-anchor="middle">
+    80% Confidence Interval
+  </text>
+
+  <!-- Secondary stats -->
+  <g transform="translate(520, 280)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#F18F01" text-anchor="middle">5.7x</text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="16" fill="#cccccc" text-anchor="middle">Mean</text>
+  </g>
+
+  <g transform="translate(700, 280)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#F18F01" text-anchor="middle">$47T</text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="16" fill="#cccccc" text-anchor="middle">Value</text>
+  </g>
+
+  <g transform="translate(880, 280)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#F18F01" text-anchor="middle">91.5%</text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="16" fill="#cccccc" text-anchor="middle">AI Sensitivity</text>
+  </g>
+
+  <!-- Mini chart -->
+  <path d="M 60 550 Q 200 520 350 480 T 550 400" stroke="#F18F01" stroke-width="3" fill="none"/>
+  <path d="M 60 550 Q 200 520 350 480 T 550 400 L 550 550 L 60 550 Z" fill="#2E86AB" opacity="0.2"/>
+
+  <!-- Bottom tagline -->
+  <text x="60" y="590" font-family="Arial, sans-serif" font-size="16" fill="#888888">
+    Monte Carlo simulation • Sobol sensitivity analysis • Policy ROI rankings
+  </text>
+
+  <!-- URL -->
+  <text x="1140" y="600" font-family="Arial, sans-serif" font-size="14" fill="#2E86AB" text-anchor="end">
+    ai-bio-acceleration.github.io
+  </text>
+</svg>

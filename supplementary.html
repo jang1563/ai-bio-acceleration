@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplementary Materials - AI-Accelerated Biological Discovery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles for supplementary page */
+        .supp-header {
+            background: var(--neutral-900);
+            color: var(--white);
+            padding: var(--space-3xl) var(--space-xl);
+            text-align: center;
+        }
+
+        .supp-header h1 {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .supp-header p {
+            color: var(--neutral-400);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: var(--space-lg);
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+
+        .data-table th {
+            background: var(--neutral-50);
+            font-weight: 600;
+            color: var(--neutral-700);
+            position: sticky;
+            top: 60px;
+        }
+
+        .data-table tr:hover {
+            background: var(--neutral-50);
+        }
+
+        .data-table code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--neutral-100);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .confidence-high { color: var(--success); }
+        .confidence-medium { color: var(--accent); }
+        .confidence-low { color: var(--warning); }
+
+        .source-link {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .source-link:hover {
+            text-decoration: underline;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .supp-section {
+            margin-bottom: var(--space-3xl);
+        }
+
+        .supp-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 2px solid var(--neutral-200);
+        }
+
+        .supp-section h3 {
+            font-size: 1.1rem;
+            margin: var(--space-xl) 0 var(--space-md);
+            color: var(--neutral-700);
+        }
+
+        .equation-box {
+            background: var(--neutral-50);
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin: var(--space-lg) 0;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .download-card {
+            background: var(--white);
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-normal);
+        }
+
+        .download-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .download-card h4 {
+            margin-bottom: var(--space-sm);
+            color: var(--neutral-800);
+        }
+
+        .download-card p {
+            font-size: 0.85rem;
+            color: var(--neutral-500);
+            margin-bottom: var(--space-md);
+        }
+
+        .download-card .file-info {
+            font-size: 0.75rem;
+            color: var(--neutral-400);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">AI Bio Acceleration</a>
+            <div class="nav-links">
+                <a href="index.html#summary">Summary</a>
+                <a href="index.html#results">Results</a>
+                <a href="index.html#policy">Policy</a>
+                <a href="index.html#methods">Methods</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="supp-header">
+        <h1>Supplementary Materials</h1>
+        <p>Complete parameter tables, full sensitivity analysis, and technical documentation</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="section">
+        <div class="container">
+            <a href="index.html" class="back-link">← Back to Main Article</a>
+
+            <!-- Table of Contents -->
+            <nav class="supp-section">
+                <h2>Contents</h2>
+                <ol style="padding-left: var(--space-xl); line-height: 2;">
+                    <li><a href="#parameters" class="source-link">Complete Parameter Table</a></li>
+                    <li><a href="#distributions" class="source-link">Distribution Specifications</a></li>
+                    <li><a href="#sensitivity" class="source-link">Full Sensitivity Analysis</a></li>
+                    <li><a href="#equations" class="source-link">Model Equations</a></li>
+                    <li><a href="#validation" class="source-link">Validation & Diagnostics</a></li>
+                    <li><a href="#downloads" class="source-link">Data Downloads</a></li>
+                </ol>
+            </nav>
+
+            <!-- S1: Complete Parameter Table -->
+            <section id="parameters" class="supp-section">
+                <h2>S1. Complete Parameter Table</h2>
+                <p style="margin-bottom: var(--space-lg); color: var(--neutral-600);">
+                    All 12 model parameters with point estimates, distributions, sources, and confidence levels.
+                </p>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Symbol</th>
+                                <th>Point Est.</th>
+                                <th>Distribution</th>
+                                <th>Range</th>
+                                <th>Source</th>
+                                <th>Confidence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>AI Growth Rate</strong></td>
+                                <td><code>g_ai</code></td>
+                                <td>0.25 (25%/yr)</td>
+                                <td>Lognormal</td>
+                                <td>[0.10, 0.50]</td>
+                                <td><a href="#" class="source-link">Amodei 2024, AI Index</a></td>
+                                <td class="confidence-medium">Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cognitive Multiplier Max</strong></td>
+                                <td><code>M_max_cognitive</code></td>
+                                <td>5.0x</td>
+                                <td>Lognormal</td>
+                                <td>[3.0, 8.0]</td>
+                                <td><a href="#" class="source-link">Expert elicitation</a></td>
+                                <td class="confidence-low">Low</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Physical Multiplier Max</strong></td>
+                                <td><code>M_max_physical</code></td>
+                                <td>2.0x</td>
+                                <td>Lognormal</td>
+                                <td>[1.5, 3.0]</td>
+                                <td><a href="#" class="source-link">Lab automation studies</a></td>
+                                <td class="confidence-medium">Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Clinical Multiplier Max</strong></td>
+                                <td><code>M_max_clinical</code></td>
+                                <td>3.0x</td>
+                                <td>Lognormal</td>
+                                <td>[2.0, 5.0]</td>
+                                <td><a href="#" class="source-link">Clinical AI literature</a></td>
+                                <td class="confidence-medium">Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Regulatory Multiplier Max</strong></td>
+                                <td><code>M_max_regulatory</code></td>
+                                <td>1.5x</td>
+                                <td>Lognormal</td>
+                                <td>[1.2, 2.0]</td>
+                                <td><a href="#" class="source-link">FDA data</a></td>
+                                <td class="confidence-high">High</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Phase 2 Success (Baseline)</strong></td>
+                                <td><code>p_phase2_base</code></td>
+                                <td>0.30 (30%)</td>
+                                <td>Beta</td>
+                                <td>[0.20, 0.40]</td>
+                                <td><a href="#" class="source-link">FDA CDER 2015-2023</a></td>
+                                <td class="confidence-high">High</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Phase 2 Success (Max)</strong></td>
+                                <td><code>p_phase2_max</code></td>
+                                <td>0.60 (60%)</td>
+                                <td>Beta</td>
+                                <td>[0.45, 0.75]</td>
+                                <td><a href="#" class="source-link">AI drug discovery papers</a></td>
+                                <td class="confidence-low">Low</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Saturation Rate</strong></td>
+                                <td><code>k_saturation</code></td>
+                                <td>0.15</td>
+                                <td>Uniform</td>
+                                <td>[0.10, 0.20]</td>
+                                <td><a href="#" class="source-link">Tech diffusion models</a></td>
+                                <td class="confidence-medium">Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Data Quality Factor</strong></td>
+                                <td><code>γ_data</code></td>
+                                <td>0.8</td>
+                                <td>Triangular</td>
+                                <td>[0.6, 1.0]</td>
+                                <td><a href="#" class="source-link">Biobank literature</a></td>
+                                <td class="confidence-medium">Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Feedback Strength</strong></td>
+                                <td><code>α_feedback</code></td>
+                                <td>0.1</td>
+                                <td>Uniform</td>
+                                <td>[0.05, 0.15]</td>
+                                <td><a href="#" class="source-link">System dynamics models</a></td>
+                                <td class="confidence-low">Low</td>
+                            </tr>
+                            <tr>
+                                <td><strong>QALY per Cure</strong></td>
+                                <td><code>qaly_per_cure</code></td>
+                                <td>15.0</td>
+                                <td>Triangular</td>
+                                <td>[8.0, 25.0]</td>
+                                <td><a href="#" class="source-link">WHO GBD, NICE</a></td>
+                                <td class="confidence-medium">Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Value per QALY</strong></td>
+                                <td><code>value_per_qaly</code></td>
+                                <td>$150,000</td>
+                                <td>Lognormal</td>
+                                <td>[$100K, $250K]</td>
+                                <td><a href="#" class="source-link">HTA guidelines</a></td>
+                                <td class="confidence-high">High</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- S2: Distribution Specifications -->
+            <section id="distributions" class="supp-section">
+                <h2>S2. Distribution Specifications</h2>
+
+                <h3>Lognormal Distributions</h3>
+                <p>For positive parameters with right-skewed uncertainty:</p>
+                <div class="equation-box">
+X ~ Lognormal(μ, σ)
+P(X ≤ x) = Φ((ln(x) - μ) / σ)
+
+g_ai:           μ = ln(0.25) ≈ -1.39, σ = 0.30
+M_max_cognitive: μ = ln(5.0) ≈ 1.61,  σ = 0.20
+value_per_qaly:  μ = ln(150000) ≈ 11.92, σ = 0.25
+                </div>
+
+                <h3>Beta Distributions</h3>
+                <p>For probability parameters bounded in [0, 1]:</p>
+                <div class="equation-box">
+X ~ Beta(α, β)
+E[X] = α / (α + β)
+Var[X] = αβ / ((α + β)² (α + β + 1))
+
+p_phase2_base: α = 6, β = 14  → E[X] = 0.30, SD = 0.10
+p_phase2_max:  α = 12, β = 8  → E[X] = 0.60, SD = 0.11
+                </div>
+
+                <h3>Triangular Distributions</h3>
+                <p>For parameters with known bounds and mode:</p>
+                <div class="equation-box">
+X ~ Triangular(a, c, b)  where a = min, c = mode, b = max
+
+γ_data:       a = 0.6, c = 0.8, b = 1.0
+qaly_per_cure: a = 8.0, c = 15.0, b = 25.0
+                </div>
+
+                <h3>Uniform Distributions</h3>
+                <p>For parameters with high uncertainty within bounds:</p>
+                <div class="equation-box">
+X ~ Uniform(a, b)
+
+k_saturation: a = 0.10, b = 0.20
+α_feedback:   a = 0.05, b = 0.15
+                </div>
+            </section>
+
+            <!-- S3: Full Sensitivity Analysis -->
+            <section id="sensitivity" class="supp-section">
+                <h2>S3. Full Sensitivity Analysis</h2>
+
+                <h3>Sobol Indices</h3>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>First-Order (S_i)</th>
+                                <th>Total-Order (S_Ti)</th>
+                                <th>Interaction (S_Ti - S_i)</th>
+                                <th>Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: rgba(220, 53, 69, 0.08);">
+                                <td><code>g_ai</code></td>
+                                <td><strong>0.915</strong></td>
+                                <td><strong>0.942</strong></td>
+                                <td>0.027</td>
+                                <td>Dominant driver; minimal interactions</td>
+                            </tr>
+                            <tr>
+                                <td><code>p_phase2</code></td>
+                                <td>0.045</td>
+                                <td>0.058</td>
+                                <td>0.013</td>
+                                <td>Moderate effect, some interactions</td>
+                            </tr>
+                            <tr>
+                                <td><code>M_max_cognitive</code></td>
+                                <td>0.016</td>
+                                <td>0.024</td>
+                                <td>0.008</td>
+                                <td>Minor effect</td>
+                            </tr>
+                            <tr>
+                                <td><code>k_saturation</code></td>
+                                <td>0.012</td>
+                                <td>0.018</td>
+                                <td>0.006</td>
+                                <td>Minor effect</td>
+                            </tr>
+                            <tr>
+                                <td><code>M_max_clinical</code></td>
+                                <td>0.009</td>
+                                <td>0.015</td>
+                                <td>0.006</td>
+                                <td>Minor effect</td>
+                            </tr>
+                            <tr>
+                                <td><code>γ_data</code></td>
+                                <td>0.002</td>
+                                <td>0.008</td>
+                                <td>0.006</td>
+                                <td>Negligible direct, some interactions</td>
+                            </tr>
+                            <tr>
+                                <td><code>M_max_physical</code></td>
+                                <td>0.001</td>
+                                <td>0.005</td>
+                                <td>0.004</td>
+                                <td>Negligible</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Correlation Analysis (Iman-Conover Method)</h3>
+                <p>Effect of parameter correlations on output uncertainty:</p>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter Pair</th>
+                                <th>Assumed Correlation</th>
+                                <th>Rationale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>(g_ai, M_max_cognitive)</td>
+                                <td>ρ = 0.5</td>
+                                <td>Better AI → better cognitive tools</td>
+                            </tr>
+                            <tr>
+                                <td>(g_ai, M_max_clinical)</td>
+                                <td>ρ = 0.3</td>
+                                <td>AI benefits compound across domains</td>
+                            </tr>
+                            <tr>
+                                <td>(M_max_cognitive, M_max_clinical)</td>
+                                <td>ρ = 0.4</td>
+                                <td>Common AI infrastructure</td>
+                            </tr>
+                            <tr>
+                                <td>(p_phase2_base, p_phase2_max)</td>
+                                <td>ρ = 0.6</td>
+                                <td>Mechanistic linkage</td>
+                            </tr>
+                            <tr>
+                                <td>(γ_data, M_max_cognitive)</td>
+                                <td>ρ = 0.3</td>
+                                <td>Data quality enables AI effectiveness</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p><strong>Impact of correlations:</strong></p>
+                <ul style="padding-left: var(--space-xl); line-height: 1.8;">
+                    <li>Mean acceleration: +4.5 equivalent years (+2.5%)</li>
+                    <li>Standard deviation: +15% (wider uncertainty)</li>
+                    <li>80% CI: Shifts from [89, 242] to [85, 255]</li>
+                </ul>
+            </section>
+
+            <!-- S4: Model Equations -->
+            <section id="equations" class="supp-section">
+                <h2>S4. Model Equations</h2>
+
+                <h3>Core Progress Equation</h3>
+                <div class="equation-box">
+P(t) = ∫₀ᵗ ∑ᵢ wᵢ · Mᵢ(τ) · Sᵢ(τ) · γ(τ) dτ
+
+where:
+  P(t)   = Cumulative scientific progress at time t
+  wᵢ     = Weight of stage i in overall pipeline
+  Mᵢ(τ)  = AI multiplier for stage i at time τ
+  Sᵢ(τ)  = Success probability for stage i at time τ
+  γ(τ)   = Data quality factor at time τ
+                </div>
+
+                <h3>AI Multiplier Function</h3>
+                <div class="equation-box">
+Mᵢ(t) = 1 + (Mᵢ_max - 1) · (1 - exp(-k · A(t)))
+
+where:
+  Mᵢ_max = Maximum multiplier for stage i
+  k      = Saturation rate
+  A(t)   = AI capability level at time t
+                </div>
+
+                <h3>AI Capability Growth</h3>
+                <div class="equation-box">
+A(t) = A₀ · (1 + g_ai)ᵗ · (1 + α · ∫₀ᵗ R(τ) dτ)
+
+where:
+  A₀     = Initial AI capability (normalized to 1.0 in 2024)
+  g_ai   = Annual AI growth rate
+  α      = Feedback strength from research to AI
+  R(τ)   = Research output rate at time τ
+                </div>
+
+                <h3>Acceleration Factor</h3>
+                <div class="equation-box">
+F(T) = P_ai(T) / P_counterfactual(T)
+
+where:
+  T = Time horizon (default: 2050)
+  P_ai = Progress with AI acceleration
+  P_counterfactual = Progress without AI (g_ai = 0)
+                </div>
+            </section>
+
+            <!-- S5: Validation & Diagnostics -->
+            <section id="validation" class="supp-section">
+                <h2>S5. Validation & Diagnostics</h2>
+
+                <h3>Monte Carlo Convergence</h3>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Value</th>
+                                <th>Threshold</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Running mean CV (last 10%)</td>
+                                <td>0.0005</td>
+                                <td>< 0.01</td>
+                                <td style="color: var(--success);">✓ PASS</td>
+                            </tr>
+                            <tr>
+                                <td>Percentile stability (80%)</td>
+                                <td>±1.2%</td>
+                                <td>< ±2%</td>
+                                <td style="color: var(--success);">✓ PASS</td>
+                            </tr>
+                            <tr>
+                                <td>Effective sample size</td>
+                                <td>9,847</td>
+                                <td>> 1,000</td>
+                                <td style="color: var(--success);">✓ PASS</td>
+                            </tr>
+                            <tr>
+                                <td>R-hat (Gelman-Rubin)</td>
+                                <td>1.002</td>
+                                <td>< 1.1</td>
+                                <td style="color: var(--success);">✓ PASS</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Sanity Checks</h3>
+                <ul style="padding-left: var(--space-xl); line-height: 1.8;">
+                    <li><strong>2030 projection:</strong> 2.1x acceleration — consistent with current trends</li>
+                    <li><strong>Counterfactual baseline:</strong> ~26 equivalent years by 2050 — matches historical rates</li>
+                    <li><strong>Upper bound (Amodei):</strong> 8.8x — within proposed 5-10x range</li>
+                    <li><strong>g_ai sensitivity:</strong> Dominance (91.5%) is consistent with theoretical expectations</li>
+                </ul>
+
+                <h3>Known Limitations</h3>
+                <ul style="padding-left: var(--space-xl); line-height: 1.8;">
+                    <li>Model assumes continuous AI growth (no discontinuities or winters)</li>
+                    <li>Feedback effects are linearized approximations</li>
+                    <li>Disease-specific projections assume average population</li>
+                    <li>Policy ROI estimates assume no implementation barriers</li>
+                    <li>Western-centric data sources may not generalize globally</li>
+                </ul>
+            </section>
+
+            <!-- S6: Data Downloads -->
+            <section id="downloads" class="supp-section">
+                <h2>S6. Data Downloads</h2>
+
+                <div class="download-grid">
+                    <a href="data/parameters.csv" class="download-card">
+                        <h4>📊 Parameter Table</h4>
+                        <p>All 12 parameters with distributions and sources</p>
+                        <span class="file-info">CSV • 2 KB</span>
+                    </a>
+                    <a href="data/monte_carlo_results.csv" class="download-card">
+                        <h4>📈 Monte Carlo Results</h4>
+                        <p>10,000 samples with all output variables</p>
+                        <span class="file-info">CSV • 1.2 MB</span>
+                    </a>
+                    <a href="data/sobol_indices.csv" class="download-card">
+                        <h4>🎯 Sensitivity Indices</h4>
+                        <p>First-order and total-order Sobol indices</p>
+                        <span class="file-info">CSV • 1 KB</span>
+                    </a>
+                    <a href="data/policy_roi.csv" class="download-card">
+                        <h4>📋 Policy ROI Rankings</h4>
+                        <p>All interventions with cost-benefit analysis</p>
+                        <span class="file-info">CSV • 3 KB</span>
+                    </a>
+                    <a href="data/disease_projections.csv" class="download-card">
+                        <h4>🏥 Disease Projections</h4>
+                        <p>Cure timelines for 12 disease categories</p>
+                        <span class="file-info">CSV • 2 KB</span>
+                    </a>
+                    <a href="https://github.com/ai-bio-acceleration-model" class="download-card">
+                        <h4>💻 Full Source Code</h4>
+                        <p>Complete model implementation (Python)</p>
+                        <span class="file-info">GitHub Repository</span>
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 AI Bio Acceleration Model Project. Open source under MIT License.</p>
+                <p class="footer-note">
+                    <a href="index.html" style="color: var(--neutral-400);">← Return to Main Article</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

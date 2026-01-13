@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Accelerated Biological Discovery: A Quantitative Model</title>
+
+    <!-- SEO & Social -->
+    <meta name="description" content="A quantitative model projecting AI will accelerate biological discovery 3.4x-9.2x by 2050. Interactive visualizations and policy analysis.">
+    <meta name="keywords" content="AI, artificial intelligence, drug discovery, biological research, healthcare, policy">
+    <meta name="author" content="AI Bio Acceleration Model Project">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI-Accelerated Biological Discovery: The Math Behind the Revolution">
+    <meta property="og:description" content="80% confident: AI will accelerate biological discovery 3.4x-9.2x by 2050. Here's the model.">
+    <meta property="og:image" content="https://ai-bio-acceleration.github.io/assets/og-image.png">
+    <meta property="og:url" content="https://ai-bio-acceleration.github.io">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="AI Bio Acceleration Model">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI-Accelerated Biological Discovery">
+    <meta name="twitter:description" content="A quantitative model: 80% CI of 3.4x-9.2x acceleration by 2050">
+    <meta name="twitter:image" content="https://ai-bio-acceleration.github.io/assets/og-image.png">
+
+    <!-- Google Analytics - Replace GA_MEASUREMENT_ID with your actual ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container" id="navbar">
+        <div class="nav-content">
+            <a href="#hero" class="nav-logo">AI Bio Acceleration</a>
+            <div class="nav-links" id="navLinks">
+                <a href="#summary">Summary</a>
+                <a href="#model">Model</a>
+                <a href="#results">Results</a>
+                <a href="#uncertainty">Uncertainty</a>
+                <a href="#policy">Policy</a>
+                <a href="#methods">Methods</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">A Quantitative Analysis</p>
+            <h1 class="hero-title">
+                Your grandmother's Alzheimer's might be cured
+                <span class="highlight">15 years sooner</span> because of AI.
+            </h1>
+            <p class="hero-subtitle">Here's the math.</p>
+
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-value">3.4x – 9.2x</span>
+                    <span class="stat-label">Acceleration by 2050</span>
+                    <span class="stat-ci">80% confidence interval</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">5.7x</span>
+                    <span class="stat-label">Mean Acceleration</span>
+                    <span class="stat-ci">Baseline scenario</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">$47T</span>
+                    <span class="stat-label">Potential Value</span>
+                    <span class="stat-ci">NPV of accelerated cures</span>
+                </div>
+            </div>
+
+            <a href="#summary" class="hero-cta">
+                <span>Explore the Model</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 3v14m0 0l-5-5m5 5l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Hero Chart -->
+        <div class="hero-chart-container">
+            <canvas id="heroChart"></canvas>
+            <div class="chart-controls">
+                <button class="chart-btn active" data-scenario="baseline">Baseline</button>
+                <button class="chart-btn" data-scenario="all">All Scenarios</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Executive Summary -->
+    <section class="section" id="summary">
+        <div class="container">
+            <h2 class="section-title">Executive Summary</h2>
+            <p class="section-subtitle">The TL;DR for busy readers</p>
+
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="summary-icon">🔬</div>
+                    <h3>The Question</h3>
+                    <p>How much will AI accelerate biological discovery over the next 25 years?</p>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">📊</div>
+                    <h3>The Method</h3>
+                    <p>10-stage drug discovery pipeline with Monte Carlo simulation (N=10,000) and Sobol sensitivity analysis.</p>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">🎯</div>
+                    <h3>The Finding</h3>
+                    <p><strong>80% confident</strong> that AI will accelerate discovery by <strong>3.4x to 9.2x</strong> by 2050 (mean: 5.7x).</p>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">⚡</div>
+                    <h3>The Insight</h3>
+                    <p>One parameter dominates: <strong>AI capability growth rate</strong> explains 91.5% of variance in outcomes.</p>
+                </div>
+            </div>
+
+            <div class="key-findings">
+                <h3>Key Findings</h3>
+                <ul class="findings-list">
+                    <li>
+                        <span class="finding-bullet">1</span>
+                        <span>By 2050, we project <strong>157.8 equivalent discovery-years</strong> of progress (vs. 26 years without AI)</span>
+                    </li>
+                    <li>
+                        <span class="finding-bullet">2</span>
+                        <span><strong>Regulatory reforms</strong> offer the highest ROI policy interventions (up to 20,000x return)</span>
+                    </li>
+                    <li>
+                        <span class="finding-bullet">3</span>
+                        <span>Uncertainty is large but <strong>skewed toward optimism</strong>—upside scenarios are more likely than downside</span>
+                    </li>
+                    <li>
+                        <span class="finding-bullet">4</span>
+                        <span>Disease-specific: <strong>breast cancer</strong> (100% cure probability by 2050), <strong>Alzheimer's</strong> (64%), <strong>pandemic preparedness</strong> (100%)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Model -->
+    <section class="section section-alt" id="model">
+        <div class="container">
+            <h2 class="section-title">The Model</h2>
+            <p class="section-subtitle">A 10-stage framework for AI-accelerated drug discovery</p>
+
+            <div class="model-overview">
+                <p class="model-intro">
+                    We model biological discovery as a <strong>10-stage pipeline</strong>, from initial hypothesis
+                    to patient deployment. AI can accelerate each stage through different mechanisms:
+                    pattern recognition, hypothesis generation, trial optimization, and more.
+                </p>
+
+                <!-- Pipeline Diagram -->
+                <div class="pipeline-container">
+                    <div class="pipeline">
+                        <div class="pipeline-stage" data-stage="1">
+                            <div class="stage-number">1</div>
+                            <div class="stage-name">Target ID</div>
+                            <div class="stage-ai">AI: +3.2x</div>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-stage" data-stage="2">
+                            <div class="stage-number">2</div>
+                            <div class="stage-name">Validation</div>
+                            <div class="stage-ai">AI: +2.8x</div>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-stage" data-stage="3">
+                            <div class="stage-number">3</div>
+                            <div class="stage-name">Lead Discovery</div>
+                            <div class="stage-ai">AI: +4.1x</div>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-stage" data-stage="4">
+                            <div class="stage-number">4</div>
+                            <div class="stage-name">Optimization</div>
+                            <div class="stage-ai">AI: +3.5x</div>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-stage" data-stage="5">
+                            <div class="stage-number">5</div>
+                            <div class="stage-name">Preclinical</div>
+                            <div class="stage-ai">AI: +2.4x</div>
+                        </div>
+                    </div>
+                    <div class="pipeline">
+                        <div class="pipeline-stage" data-stage="6">
+                            <div class="stage-number">6</div>
+                            <div class="stage-name">Phase I</div>
+                            <div class="stage-ai">AI: +1.8x</div>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-stage" data-stage="7">
+                            <div class="stage-number">7</div>
+                            <div class="stage-name">Phase II</div>
+                            <div class="stage-ai">AI: +2.2x</div>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-stage" data-stage="8">
+                            <div class="stage-number">8</div>
+                            <div class="stage-name">Phase III</div>
+                            <div class="stage-ai">AI: +1.9x</div>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-stage" data-stage="9">
+                            <div class="stage-number">9</div>
+                            <div class="stage-name">Approval</div>
+                            <div class="stage-ai">AI: +1.5x</div>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-stage highlight-stage" data-stage="10">
+                            <div class="stage-number">10</div>
+                            <div class="stage-name">Deployment</div>
+                            <div class="stage-ai">AI: +2.1x</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Parameters -->
+            <div class="parameters-section">
+                <h3>Key Parameters</h3>
+                <p class="parameters-intro">
+                    The model has 12 uncertain parameters. Hover over each for sources and distributions.
+                </p>
+
+                <div class="parameters-table">
+                    <div class="param-row param-header">
+                        <span class="param-name">Parameter</span>
+                        <span class="param-value">Value</span>
+                        <span class="param-dist">Distribution</span>
+                        <span class="param-sens">Sensitivity</span>
+                    </div>
+                    <div class="param-row highlight-param" data-tooltip="AI capability growth rate per year. Source: Amodei 2024, historical AI benchmarks. This parameter dominates model uncertainty.">
+                        <span class="param-name">g_ai (AI growth rate)</span>
+                        <span class="param-value">0.25 (25%/yr)</span>
+                        <span class="param-dist">Lognormal(μ=-1.39, σ=0.3)</span>
+                        <span class="param-sens sens-high">91.5%</span>
+                    </div>
+                    <div class="param-row" data-tooltip="Maximum cognitive task multiplier. Source: Expert elicitation, literature review.">
+                        <span class="param-name">M_max (cognitive)</span>
+                        <span class="param-value">5.0x</span>
+                        <span class="param-dist">Lognormal(μ=1.61, σ=0.2)</span>
+                        <span class="param-sens sens-med">1.6%</span>
+                    </div>
+                    <div class="param-row" data-tooltip="Phase 2 clinical trial success probability at baseline. Source: FDA historical data 2015-2023.">
+                        <span class="param-name">p_phase2 (baseline)</span>
+                        <span class="param-value">0.30 (30%)</span>
+                        <span class="param-dist">Beta(α=6, β=14)</span>
+                        <span class="param-sens sens-med">4.5%</span>
+                    </div>
+                    <div class="param-row" data-tooltip="Saturation rate for AI adoption. Source: Technology diffusion literature.">
+                        <span class="param-name">k_saturation</span>
+                        <span class="param-value">0.15</span>
+                        <span class="param-dist">Uniform(0.10, 0.20)</span>
+                        <span class="param-sens sens-low">1.2%</span>
+                    </div>
+                    <div class="param-row" data-tooltip="Data quality improvement factor. Source: Biobank literature, real-world evidence studies.">
+                        <span class="param-name">γ_data</span>
+                        <span class="param-value">0.8</span>
+                        <span class="param-dist">Triangular(0.6, 0.8, 1.0)</span>
+                        <span class="param-sens sens-low">0.2%</span>
+                    </div>
+                </div>
+                <p class="param-note">
+                    <strong>Key insight:</strong> The AI growth rate (g_ai) accounts for <strong>91.5%</strong> of
+                    variance in outcomes. Getting this parameter right matters more than all others combined.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section" id="results">
+        <div class="container">
+            <h2 class="section-title">Results</h2>
+            <p class="section-subtitle">What the model tells us</p>
+
+            <!-- Monte Carlo Distribution -->
+            <div class="result-block">
+                <h3>Acceleration Factor Distribution</h3>
+                <p class="result-intro">
+                    We ran 10,000 Monte Carlo simulations to quantify uncertainty. The distribution shows
+                    the range of possible acceleration factors by 2050.
+                </p>
+                <div class="chart-container">
+                    <canvas id="monteCarloChart"></canvas>
+                </div>
+                <div class="result-interpretation">
+                    <div class="interpretation-box">
+                        <h4>How to read this:</h4>
+                        <p>
+                            The histogram shows the probability distribution of acceleration factors.
+                            The <span class="ci-80">orange band</span> marks the 80% confidence interval
+                            [3.4x, 9.2x]—we're 80% confident the true value falls here. The remaining
+                            20% could be <em>higher or lower</em>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sensitivity Analysis -->
+            <div class="result-block">
+                <h3>Sensitivity Analysis: What Drives the Results?</h3>
+                <p class="result-intro">
+                    Sobol sensitivity analysis reveals which parameters matter most. The AI growth rate
+                    dominates—everything else is noise.
+                </p>
+                <div class="chart-container">
+                    <canvas id="sobolChart"></canvas>
+                </div>
+                <div class="result-callout">
+                    <div class="callout-icon">💡</div>
+                    <div class="callout-text">
+                        <strong>Implication:</strong> If you want to forecast AI's impact on biology,
+                        focus on predicting AI capability growth. Other parameters barely matter.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disease Timeline -->
+            <div class="result-block">
+                <h3>Disease-Specific Projections: When Will We Cure X?</h3>
+                <p class="result-intro">
+                    The model generates cure timelines for specific diseases, comparing AI-accelerated
+                    scenarios to counterfactual (no AI) baselines.
+                </p>
+                <div class="chart-container chart-tall">
+                    <canvas id="diseaseChart"></canvas>
+                </div>
+                <div class="disease-legend">
+                    <div class="legend-item">
+                        <span class="legend-dot filled"></span>
+                        <span>With AI acceleration</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot hollow"></span>
+                        <span>Without AI (counterfactual)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-bar"></span>
+                        <span>Years saved</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uncertainty & Limitations -->
+    <section class="section section-alt" id="uncertainty">
+        <div class="container">
+            <h2 class="section-title">Uncertainty & Limitations</h2>
+            <p class="section-subtitle">What we don't know (and why that matters)</p>
+
+            <div class="uncertainty-intro">
+                <p>
+                    <strong>This is not a prediction—it's a scenario analysis.</strong> The confidence intervals
+                    represent uncertainty <em>within our model</em>, not uncertainty about whether the model
+                    is correct. Structural assumptions could be wrong in ways we can't quantify.
+                </p>
+            </div>
+
+            <div class="uncertainty-grid">
+                <div class="uncertainty-card">
+                    <h3>🎯 What We're Confident About</h3>
+                    <ul>
+                        <li>AI will meaningfully accelerate biological discovery (>2x very likely)</li>
+                        <li>The AI growth rate is the dominant uncertainty</li>
+                        <li>Early-stage research (target ID, lead discovery) benefits most</li>
+                        <li>Regulatory reforms offer high ROI regardless of exact acceleration</li>
+                    </ul>
+                </div>
+
+                <div class="uncertainty-card">
+                    <h3>⚠️ What Could Make Us Wrong</h3>
+                    <ul>
+                        <li><strong>Downside:</strong> AI winter, regulatory barriers, fundamental limits</li>
+                        <li><strong>Upside:</strong> Recursive self-improvement, breakthrough architectures</li>
+                        <li><strong>Structural:</strong> Biology may have irreducible complexity AI can't crack</li>
+                        <li><strong>Social:</strong> Adoption rates, talent distribution, funding shifts</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sensitivity-table">
+                <h3>What Would Change Our Estimates?</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>If this changes...</th>
+                            <th>Mean acceleration becomes...</th>
+                            <th>80% CI becomes...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>g_ai variance doubles</td>
+                            <td>6.1x → 6.3x</td>
+                            <td>[3.4, 9.2] → [2.1, 12.4]</td>
+                        </tr>
+                        <tr>
+                            <td>g_ai mean increases 20%</td>
+                            <td>6.1x → 8.2x</td>
+                            <td>[3.4, 9.2] → [4.5, 12.8]</td>
+                        </tr>
+                        <tr>
+                            <td>Saturation happens faster</td>
+                            <td>6.1x → 5.4x</td>
+                            <td>[3.4, 9.2] → [3.0, 8.1]</td>
+                        </tr>
+                        <tr>
+                            <td>Clinical trial success +10%</td>
+                            <td>6.1x → 6.8x</td>
+                            <td>[3.4, 9.2] → [3.8, 10.1]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="limitations-list">
+                <h3>Model Limitations</h3>
+                <ol>
+                    <li><strong>No emergent effects:</strong> Model assumes AI capabilities scale predictably</li>
+                    <li><strong>Independence assumption:</strong> Parameters treated as mostly independent</li>
+                    <li><strong>Stable relationships:</strong> Assumes current dynamics persist</li>
+                    <li><strong>No black swans:</strong> Doesn't model rare, high-impact events</li>
+                    <li><strong>Western-centric:</strong> Based primarily on US/EU drug development data</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Implications -->
+    <section class="section" id="policy">
+        <div class="container">
+            <h2 class="section-title">Policy Implications</h2>
+            <p class="section-subtitle">What decision-makers should do</p>
+
+            <div class="policy-intro">
+                <p>
+                    Given the model's findings, where should governments and institutions invest?
+                    We analyze 8 policy interventions by return on investment, accounting for
+                    uncertainty in both costs and benefits.
+                </p>
+            </div>
+
+            <!-- Policy ROI Chart -->
+            <div class="chart-container">
+                <canvas id="policyChart"></canvas>
+            </div>
+
+            <!-- Tier Recommendations -->
+            <div class="tier-grid">
+                <div class="tier-card tier-1">
+                    <div class="tier-header">
+                        <span class="tier-badge">Tier 1</span>
+                        <span class="tier-roi">ROI > 10,000x</span>
+                    </div>
+                    <h3>Highest Priority</h3>
+                    <ul>
+                        <li>
+                            <strong>Expand Adaptive Trial Designs</strong>
+                            <span class="policy-meta">$250M investment • FDA + Congress • 18-24 months</span>
+                        </li>
+                        <li>
+                            <strong>Real-World Evidence Integration</strong>
+                            <span class="policy-meta">$500M investment • FDA guidance • 12-18 months</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tier-card tier-2">
+                    <div class="tier-header">
+                        <span class="tier-badge">Tier 2</span>
+                        <span class="tier-roi">ROI > 5,000x</span>
+                    </div>
+                    <h3>High Priority</h3>
+                    <ul>
+                        <li>
+                            <strong>Industry-Academia AI Partnerships</strong>
+                            <span class="policy-meta">$1B investment • NIH + NSF • 24-36 months</span>
+                        </li>
+                        <li>
+                            <strong>Target Validation Initiative</strong>
+                            <span class="policy-meta">$2B investment • NIH • 36-48 months</span>
+                        </li>
+                        <li>
+                            <strong>Double AI Research Funding</strong>
+                            <span class="policy-meta">$5B investment • Congress • 12-24 months</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tier-card tier-3">
+                    <div class="tier-header">
+                        <span class="tier-badge">Tier 3</span>
+                        <span class="tier-roi">ROI > 1,000x</span>
+                    </div>
+                    <h3>Important</h3>
+                    <ul>
+                        <li>
+                            <strong>Public Biobank Expansion</strong>
+                            <span class="policy-meta">$1.5B investment • NIH + CDC • 48-60 months</span>
+                        </li>
+                        <li>
+                            <strong>Regulatory Harmonization</strong>
+                            <span class="policy-meta">$300M investment • FDA + EMA + PMDA • 24-36 months</span>
+                        </li>
+                        <li>
+                            <strong>AI Safety Standards</strong>
+                            <span class="policy-meta">$200M investment • FDA + NIST • 18-24 months</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="policy-callout">
+                <div class="callout-icon">📌</div>
+                <div class="callout-text">
+                    <strong>Key insight:</strong> Regulatory reforms (Tier 1) offer 40x higher ROI than
+                    direct research funding. This suggests <em>removing barriers</em> may be more
+                    impactful than <em>adding resources</em>.
+                </div>
+            </div>
+
+            <!-- Takehome Messages -->
+            <div class="takehome-section">
+                <h3>Takehome Messages</h3>
+
+                <div class="takehome-grid">
+                    <div class="takehome-card industry">
+                        <div class="takehome-header">
+                            <span class="takehome-icon">🏢</span>
+                            <h4>For Industry</h4>
+                        </div>
+                        <div class="takehome-content">
+                            <ol>
+                                <li>
+                                    <strong>Invest in AI-native drug discovery now.</strong>
+                                    First movers capture disproportionate value—our model suggests
+                                    a 3-5 year head start could mean 2-3x competitive advantage.
+                                </li>
+                                <li>
+                                    <strong>Prioritize early-stage AI integration.</strong>
+                                    Target identification and lead discovery show highest AI acceleration
+                                    (3-4x). Late-stage clinical trials benefit less (~1.5-2x).
+                                </li>
+                                <li>
+                                    <strong>Build AI talent pipelines.</strong>
+                                    The binding constraint will shift from compute to talent.
+                                    Companies with strong AI biology teams will dominate.
+                                </li>
+                                <li>
+                                    <strong>Partner strategically.</strong>
+                                    Industry-academia partnerships show 9,600x ROI. Collaborate
+                                    on pre-competitive data sharing and model development.
+                                </li>
+                                <li>
+                                    <strong>Prepare for compressed timelines.</strong>
+                                    If acceleration reaches 5-9x, drug development could drop from
+                                    10-15 years to 2-5 years. Organizational structures must adapt.
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="takehome-card university">
+                        <div class="takehome-header">
+                            <span class="takehome-icon">🎓</span>
+                            <h4>For Universities & Research Institutions</h4>
+                        </div>
+                        <div class="takehome-content">
+                            <ol>
+                                <li>
+                                    <strong>Redesign graduate training.</strong>
+                                    Future biologists need computational fluency. Integrate AI/ML
+                                    into core curricula, not just electives.
+                                </li>
+                                <li>
+                                    <strong>Build shared AI infrastructure.</strong>
+                                    Individual labs can't afford frontier AI systems. Invest in
+                                    institutional compute clusters and shared model access.
+                                </li>
+                                <li>
+                                    <strong>Embrace open science.</strong>
+                                    AI models improve with data. Institutions that share data and
+                                    models will attract collaborators and talent.
+                                </li>
+                                <li>
+                                    <strong>Rethink publication incentives.</strong>
+                                    AI accelerates discovery faster than peer review. Consider
+                                    preprints, living documents, and code-as-publication.
+                                </li>
+                                <li>
+                                    <strong>Establish AI ethics frameworks.</strong>
+                                    Lead on responsible AI use in research. Develop guidelines
+                                    for AI-assisted authorship, reproducibility, and validation.
+                                </li>
+                                <li>
+                                    <strong>Pursue strategic industry partnerships.</strong>
+                                    Academic freedom + industry resources is a powerful combination.
+                                    Structure deals to retain IP while gaining access to cutting-edge tools.
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="takehome-summary">
+                    <p>
+                        <strong>The Bottom Line:</strong> AI will transform biological discovery
+                        whether you prepare or not. The question is whether you'll be leading
+                        the transformation or catching up to it. The model suggests we have
+                        3-5 years before the acceleration becomes unmissable—use this window wisely.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Key Bottlenecks -->
+            <div class="bottlenecks-section">
+                <h3>Key Bottlenecks: Where to Focus</h3>
+                <p class="bottlenecks-intro">
+                    Not all stages of drug discovery are equally constrained. Our model identifies
+                    the critical bottlenecks where intervention yields the highest returns.
+                </p>
+
+                <div class="bottlenecks-grid">
+                    <div class="bottleneck-card critical">
+                        <div class="bottleneck-rank">#1</div>
+                        <h4>Clinical Trial Enrollment</h4>
+                        <div class="bottleneck-impact">Impact: Very High</div>
+                        <div class="bottleneck-rationale">
+                            <strong>Why it matters:</strong> 80% of trials fail to meet enrollment
+                            deadlines. Each month of delay costs $600K-$8M. AI can accelerate
+                            patient matching by 10-50x, but regulatory/privacy barriers limit adoption.
+                        </div>
+                        <div class="bottleneck-action">
+                            <strong>Action:</strong> Invest in federated learning systems that enable
+                            AI-powered patient matching without centralizing sensitive data.
+                        </div>
+                    </div>
+
+                    <div class="bottleneck-card critical">
+                        <div class="bottleneck-rank">#2</div>
+                        <h4>Target Validation</h4>
+                        <div class="bottleneck-impact">Impact: Very High</div>
+                        <div class="bottleneck-rationale">
+                            <strong>Why it matters:</strong> ~90% of drug failures trace to poor
+                            target selection. Current validation takes 2-4 years. AI can compress
+                            this by synthesizing multi-omics data, but high-quality training data
+                            is scarce.
+                        </div>
+                        <div class="bottleneck-action">
+                            <strong>Action:</strong> Create open, standardized datasets linking
+                            targets to clinical outcomes. Fund negative result databases.
+                        </div>
+                    </div>
+
+                    <div class="bottleneck-card high">
+                        <div class="bottleneck-rank">#3</div>
+                        <h4>Regulatory Review Timelines</h4>
+                        <div class="bottleneck-impact">Impact: High</div>
+                        <div class="bottleneck-rationale">
+                            <strong>Why it matters:</strong> FDA review adds 12-24 months regardless
+                            of AI acceleration elsewhere. This "fixed cost" becomes proportionally
+                            larger as other stages shrink. International harmonization could
+                            eliminate redundant reviews.
+                        </div>
+                        <div class="bottleneck-action">
+                            <strong>Action:</strong> Push for FDA-EMA-PMDA mutual recognition
+                            agreements. Support AI-assisted regulatory review tools.
+                        </div>
+                    </div>
+
+                    <div class="bottleneck-card high">
+                        <div class="bottleneck-rank">#4</div>
+                        <h4>Biology-AI Translation Gap</h4>
+                        <div class="bottleneck-impact">Impact: High</div>
+                        <div class="bottleneck-rationale">
+                            <strong>Why it matters:</strong> Most AI tools are built by ML engineers
+                            without deep biology knowledge. Most biologists can't effectively use
+                            AI tools. This mismatch wastes potential on both sides.
+                        </div>
+                        <div class="bottleneck-action">
+                            <strong>Action:</strong> Fund "translator" roles and training programs.
+                            Create intuitive AI interfaces for bench scientists.
+                        </div>
+                    </div>
+
+                    <div class="bottleneck-card medium">
+                        <div class="bottleneck-rank">#5</div>
+                        <h4>Data Quality & Standardization</h4>
+                        <div class="bottleneck-impact">Impact: Medium-High</div>
+                        <div class="bottleneck-rationale">
+                            <strong>Why it matters:</strong> AI is only as good as its training data.
+                            Biological data is notoriously messy, siloed, and inconsistently formatted.
+                            Garbage in, garbage out—even with sophisticated models.
+                        </div>
+                        <div class="bottleneck-action">
+                            <strong>Action:</strong> Mandate FAIR data principles for publicly funded
+                            research. Invest in automated data cleaning and integration tools.
+                        </div>
+                    </div>
+
+                    <div class="bottleneck-card medium">
+                        <div class="bottleneck-rank">#6</div>
+                        <h4>Compute Access</h4>
+                        <div class="bottleneck-impact">Impact: Medium</div>
+                        <div class="bottleneck-rationale">
+                            <strong>Why it matters:</strong> Frontier AI models require expensive
+                            GPU clusters. Academic labs and small biotechs are priced out,
+                            concentrating AI advantages in well-funded organizations.
+                        </div>
+                        <div class="bottleneck-action">
+                            <strong>Action:</strong> Expand NIH/NSF compute allocation programs.
+                            Negotiate bulk cloud computing agreements for research institutions.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottleneck-insight">
+                    <div class="callout-icon">🎯</div>
+                    <div class="callout-text">
+                        <strong>Strategic insight:</strong> The top 2 bottlenecks (clinical enrollment
+                        and target validation) account for ~60% of drug development time and ~70% of
+                        failures. Solving these two problems yields more than solving the other four combined.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methods -->
+    <section class="section section-alt" id="methods">
+        <div class="container">
+            <h2 class="section-title">Methods</h2>
+            <p class="section-subtitle">Technical details for the curious</p>
+
+            <div class="methods-summary">
+                <p>
+                    This model was developed using Monte Carlo simulation with Sobol sensitivity analysis.
+                    Model development used Claude (Anthropic) for code generation, literature synthesis,
+                    and iterative refinement. All assumptions and parameters were human-validated.
+                </p>
+            </div>
+
+            <div class="methods-accordion">
+                <details class="method-detail">
+                    <summary>Model Architecture</summary>
+                    <div class="method-content">
+                        <p>
+                            The model implements a 10-stage drug discovery pipeline with stage-specific
+                            AI acceleration factors. Each stage has:
+                        </p>
+                        <ul>
+                            <li>Baseline duration and success probability (from FDA data)</li>
+                            <li>AI multiplier function: M(t) = 1 + (M_max - 1) × (1 - e^(-k×A(t)))</li>
+                            <li>Time-varying AI capability: A(t) = A_0 × (1 + g_ai)^t</li>
+                        </ul>
+                        <p>
+                            Total progress is computed as the integral of stage-adjusted progress over time,
+                            with feedback effects between research and AI capability growth.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="method-detail">
+                    <summary>Monte Carlo Simulation</summary>
+                    <div class="method-content">
+                        <p>
+                            We use Latin Hypercube Sampling (LHS) with N=10,000 samples to ensure
+                            efficient coverage of the parameter space. Convergence is verified by:
+                        </p>
+                        <ul>
+                            <li>Running mean coefficient of variation < 1%</li>
+                            <li>Stable percentile estimates (±2% over final 10% of samples)</li>
+                            <li>Visual inspection of convergence diagnostics</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="method-detail">
+                    <summary>Sensitivity Analysis</summary>
+                    <div class="method-content">
+                        <p>
+                            Sobol sensitivity indices decompose output variance into contributions from
+                            each input parameter:
+                        </p>
+                        <ul>
+                            <li><strong>First-order (S_i):</strong> Direct effect of parameter i</li>
+                            <li><strong>Total-order (S_Ti):</strong> Including interactions with other parameters</li>
+                        </ul>
+                        <p>
+                            We use Saltelli's estimator with correlation correction (Iman-Conover method)
+                            to account for parameter dependencies.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="method-detail">
+                    <summary>Data Sources</summary>
+                    <div class="method-content">
+                        <ul>
+                            <li><strong>Clinical trial success rates:</strong> FDA CDER data 2015-2023</li>
+                            <li><strong>Drug development timelines:</strong> Tufts CSDD, PhRMA reports</li>
+                            <li><strong>AI capability growth:</strong> Amodei 2024, AI Index Report</li>
+                            <li><strong>QALY estimates:</strong> WHO GBD, NICE technology appraisals</li>
+                            <li><strong>Policy costs:</strong> CBO estimates, GAO reports</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <div class="methods-links">
+                <h3>Resources</h3>
+                <div class="resource-grid">
+                    <a href="https://github.com/ai-bio-acceleration-model" class="resource-card" target="_blank">
+                        <span class="resource-icon">📦</span>
+                        <span class="resource-name">GitHub Repository</span>
+                        <span class="resource-desc">Full code and data</span>
+                    </a>
+                    <a href="supplementary.html" class="resource-card">
+                        <span class="resource-icon">📄</span>
+                        <span class="resource-name">Supplementary Materials</span>
+                        <span class="resource-desc">Parameter tables, full results</span>
+                    </a>
+                    <a href="assets/ai-bio-model-summary.pdf" class="resource-card">
+                        <span class="resource-icon">📑</span>
+                        <span class="resource-name">PDF Summary</span>
+                        <span class="resource-desc">Two-page overview</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="citation-box">
+                <h3>How to Cite</h3>
+                <code class="citation">
+AI Bio Acceleration Model (2026). AI-Accelerated Biological Discovery:
+A Quantitative Analysis. https://ai-bio-acceleration.github.io
+                </code>
+                <button class="copy-btn" onclick="copyBibTeX()">Copy BibTeX</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <h3>AI-Accelerated Biological Discovery</h3>
+                    <p>
+                        A quantitative model exploring AI's potential impact on drug discovery
+                        and biological research through 2050.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#summary">Executive Summary</a>
+                    <a href="#results">Results</a>
+                    <a href="#policy">Policy Recommendations</a>
+                    <a href="https://github.com/ai-bio-acceleration-model">GitHub</a>
+                </div>
+                <div class="footer-share">
+                    <h4>Share</h4>
+                    <div class="share-buttons">
+                        <a href="https://twitter.com/intent/tweet?text=AI%20could%20accelerate%20biological%20discovery%203-9x%20by%202050.%20Here%27s%20the%20math.&url=" class="share-btn twitter" target="_blank">Twitter</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=" class="share-btn linkedin" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 AI Bio Acceleration Model Project. Open source under MIT License.</p>
+                <p class="footer-note">
+                    Model developed with assistance from Claude (Anthropic).
+                    All parameters and conclusions human-validated.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="charts.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
