@@ -156,6 +156,11 @@ function createHeroChart() {
         options: {
             responsive: true,
             maintainAspectRatio: true,
+            layout: {
+                padding: {
+                    left: 10,
+                },
+            },
             interaction: {
                 mode: 'index',
                 intersect: false,
@@ -201,7 +206,7 @@ function createHeroChart() {
                 y: {
                     title: {
                         display: true,
-                        text: 'Cumulative Progress (Equiv. Discovery-Years)',
+                        text: 'Equiv. Discovery-Years',
                         font: { weight: 'bold' },
                     },
                     beginAtZero: true,
