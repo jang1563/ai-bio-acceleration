@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Assisted Research: A Case Study | AI Bio Acceleration Model</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9CTYF1T4C"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V9CTYF1T4C');
+    </script>
+
+    <!-- SEO & Social -->
+    <meta name="description" content="How we built a complex research model using AI-assisted methods. A detailed case study with actual prompts, expert review processes, and lessons learned.">
+    <meta name="keywords" content="AI research, LLM, Claude, AI-assisted science, research methodology, prompt engineering">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI-Assisted Research: Building Complex Models with LLMs">
+    <meta property="og:description" content="A case study in using AI to build research models—with actual prompts, expert reviews, and lessons learned.">
+    <meta property="og:image" content="https://jang1563.github.io/ai-bio-acceleration/assets/og-image.png">
+    <meta property="og:type" content="article">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Blog-specific styles */
+        .blog-header {
+            background: linear-gradient(135deg, var(--neutral-900) 0%, #1a3a4a 100%);
+            color: var(--white);
+            padding: 120px var(--space-xl) var(--space-3xl);
+        }
+
+        .blog-header .container {
+            max-width: 800px;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            font-size: 0.9rem;
+            color: var(--neutral-400);
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .blog-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-lg);
+        }
+
+        .blog-subtitle {
+            font-size: 1.25rem;
+            color: var(--neutral-300);
+            line-height: 1.6;
+        }
+
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-3xl) var(--space-xl);
+        }
+
+        .blog-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--neutral-900);
+            margin: var(--space-3xl) 0 var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 2px solid var(--neutral-200);
+        }
+
+        .blog-content h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--neutral-800);
+            margin: var(--space-2xl) 0 var(--space-md);
+        }
+
+        .blog-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--neutral-700);
+            margin-bottom: var(--space-lg);
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin-bottom: var(--space-lg);
+            padding-left: var(--space-xl);
+        }
+
+        .blog-content li {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--neutral-700);
+            margin-bottom: var(--space-sm);
+        }
+
+        .blog-content strong {
+            color: var(--neutral-900);
+        }
+
+        /* Prompt/Response blocks */
+        .conversation-block {
+            margin: var(--space-xl) 0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--neutral-200);
+        }
+
+        .prompt-block {
+            background: #1e1e1e;
+            padding: var(--space-lg);
+        }
+
+        .prompt-label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #7ec8e3;
+            margin-bottom: var(--space-md);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .prompt-label::before {
+            content: '👤';
+        }
+
+        .prompt-text {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: #d4d4d4;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        .response-block {
+            background: var(--neutral-50);
+            padding: var(--space-lg);
+            border-top: 1px solid var(--neutral-200);
+        }
+
+        .response-label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .response-label::before {
+            content: '🤖';
+        }
+
+        .response-text {
+            font-size: 0.95rem;
+            color: var(--neutral-700);
+            line-height: 1.7;
+        }
+
+        .response-text code {
+            background: var(--neutral-200);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+        }
+
+        /* Callout boxes */
+        .insight-box {
+            background: linear-gradient(135deg, rgba(46, 134, 171, 0.08), rgba(241, 143, 1, 0.08));
+            border-left: 4px solid var(--primary);
+            padding: var(--space-lg);
+            margin: var(--space-xl) 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+
+        .insight-box h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .insight-box p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        .warning-box {
+            background: rgba(220, 53, 69, 0.08);
+            border-left: 4px solid var(--warning);
+            padding: var(--space-lg);
+            margin: var(--space-xl) 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+
+        .warning-box h4 {
+            color: var(--warning);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        /* Version timeline */
+        .version-timeline {
+            position: relative;
+            padding-left: var(--space-2xl);
+            margin: var(--space-xl) 0;
+        }
+
+        .version-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--neutral-200);
+        }
+
+        .version-item {
+            position: relative;
+            margin-bottom: var(--space-xl);
+            padding: var(--space-lg);
+            background: var(--white);
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-md);
+        }
+
+        .version-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-1 * var(--space-2xl) + 4px);
+            top: var(--space-lg);
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 2px solid var(--white);
+        }
+
+        .version-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .version-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--neutral-800);
+            margin-bottom: var(--space-sm);
+        }
+
+        .version-desc {
+            font-size: 0.95rem;
+            color: var(--neutral-600);
+            margin-bottom: 0;
+        }
+
+        /* Expert cards */
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .expert-card {
+            background: var(--white);
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+        }
+
+        .expert-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--neutral-800);
+            margin-bottom: var(--space-xs);
+        }
+
+        .expert-card .role {
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .expert-card p {
+            font-size: 0.9rem;
+            color: var(--neutral-600);
+            margin-bottom: 0;
+        }
+
+        /* Table */
+        .blog-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-xl) 0;
+            font-size: 0.95rem;
+        }
+
+        .blog-table th,
+        .blog-table td {
+            padding: var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+
+        .blog-table th {
+            background: var(--neutral-50);
+            font-weight: 600;
+            color: var(--neutral-700);
+        }
+
+        .blog-table td {
+            color: var(--neutral-600);
+        }
+
+        /* Quote */
+        blockquote {
+            border-left: 4px solid var(--accent);
+            padding-left: var(--space-lg);
+            margin: var(--space-xl) 0;
+            font-style: italic;
+            color: var(--neutral-600);
+        }
+
+        blockquote p {
+            font-size: 1.15rem;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--neutral-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: var(--space-lg);
+            transition: var(--transition-fast);
+        }
+
+        .back-link:hover {
+            color: var(--white);
+        }
+
+        /* TOC */
+        .toc {
+            background: var(--neutral-50);
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .toc h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            color: var(--neutral-700);
+        }
+
+        .toc ol {
+            margin: 0;
+            padding-left: var(--space-lg);
+        }
+
+        .toc li {
+            margin-bottom: var(--space-sm);
+        }
+
+        .toc a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        /* CTA box */
+        .cta-box {
+            background: var(--neutral-900);
+            color: var(--white);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin: var(--space-3xl) 0;
+        }
+
+        .cta-box h3 {
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-box p {
+            color: var(--neutral-300);
+            margin-bottom: var(--space-lg);
+        }
+
+        .cta-box .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-normal);
+        }
+
+        .cta-box .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Reading Progress Bar */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Social Sharing */
+        .social-share {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            margin: var(--space-2xl) 0;
+            padding: var(--space-lg);
+            background: var(--neutral-50);
+            border-radius: var(--radius-lg);
+        }
+
+        .social-share-label {
+            font-weight: 600;
+            color: var(--neutral-700);
+            display: flex;
+            align-items: center;
+            margin-right: var(--space-md);
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: var(--transition-fast);
+        }
+
+        .share-btn.twitter {
+            background: #1DA1F2;
+            color: white;
+        }
+
+        .share-btn.linkedin {
+            background: #0A66C2;
+            color: white;
+        }
+
+        .share-btn.facebook {
+            background: #1877F2;
+            color: white;
+        }
+
+        .share-btn.copy-link {
+            background: var(--neutral-200);
+            color: var(--neutral-700);
+        }
+
+        .share-btn:hover {
+            transform: scale(1.1);
+            opacity: 0.9;
+        }
+
+        /* Anchor Links for Headings */
+        .blog-content h2,
+        .blog-content h3 {
+            position: relative;
+        }
+
+        .anchor-link {
+            position: absolute;
+            left: -1.5em;
+            opacity: 0;
+            color: var(--neutral-400);
+            text-decoration: none;
+            font-weight: 400;
+            transition: var(--transition-fast);
+        }
+
+        .blog-content h2:hover .anchor-link,
+        .blog-content h3:hover .anchor-link {
+            opacity: 1;
+        }
+
+        .anchor-link:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .anchor-link {
+                display: none;
+            }
+            .social-share {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">AI Bio Acceleration</a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Model</a>
+                <a href="index.html#results">Results</a>
+                <a href="index.html#policy">Policy</a>
+                <a href="supplementary.html">Data</a>
+                <a href="process.html" class="active">Process</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="blog-header">
+        <div class="container">
+            <a href="index.html" class="back-link">← Back to Model</a>
+
+            <div class="blog-meta">
+                <span>📅 January 2026</span>
+                <span>⏱️ 15 min read</span>
+                <span>🏷️ Methodology</span>
+            </div>
+
+            <h1 class="blog-title">AI-Assisted Research: A Case Study in Building Complex Models with LLMs</h1>
+
+            <p class="blog-subtitle">
+                How we used Claude to build a quantitative model of AI's impact on biological discovery—
+                complete with Monte Carlo simulation, sensitivity analysis, and policy recommendations.
+                A detailed look at the prompts, the process, and the lessons learned.
+            </p>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <article class="blog-content">
+
+        <!-- Table of Contents -->
+        <nav class="toc">
+            <h3>Contents</h3>
+            <ol>
+                <li><a href="#introduction">Introduction: The Meta-Experiment</a></li>
+                <li><a href="#methodology">The Methodology: AI as Research Partner</a></li>
+                <li><a href="#build-process">The Build Process: Version by Version</a></li>
+                <li><a href="#expert-review">The Expert Review Experiment</a></li>
+                <li><a href="#webpage-review">The 8-Expert Webpage Review</a></li>
+                <li><a href="#lessons">Lessons Learned</a></li>
+                <li><a href="#bigger-picture">The Bigger Picture</a></li>
+                <li><a href="#resources">Resources & Reproducibility</a></li>
+            </ol>
+        </nav>
+
+        <!-- Section 1: Introduction -->
+        <h2 id="introduction">1. Introduction: The Meta-Experiment</h2>
+
+        <p>
+            There's a certain irony in using AI to build a model that predicts AI's impact on science.
+            We're essentially conducting a meta-experiment: demonstrating AI-assisted research while
+            quantifying how much AI might accelerate research in general.
+        </p>
+
+        <p>
+            This isn't just navel-gazing. The process of building this model taught us concrete lessons
+            about how AI can (and can't) augment complex analytical work. We want to share these
+            lessons—not as abstract principles, but as a detailed case study with actual prompts,
+            actual outputs, and honest reflection on what worked.
+        </p>
+
+        <p>
+            <strong>What we built:</strong> A 10-stage drug discovery pipeline model with Monte Carlo
+            uncertainty quantification, Sobol sensitivity analysis, policy ROI rankings, and
+            disease-specific cure projections. The model produces a key finding: we're 80% confident
+            AI will accelerate biological discovery by 3.4x to 9.2x by 2050.
+        </p>
+
+        <p>
+            <strong>How we built it:</strong> Iteratively, over 10 versions, using Claude as a research
+            partner for everything from literature synthesis to code generation to simulated peer review.
+            The entire process—from initial concept to publication-ready webpage—took approximately
+            20 hours of human-AI collaboration.
+        </p>
+
+        <div class="insight-box">
+            <h4>Key Insight</h4>
+            <p>
+                AI doesn't replace the researcher—it amplifies them. The human provides direction,
+                judgment, and verification. The AI provides speed, breadth, and tireless iteration.
+                The combination is more than the sum of its parts.
+            </p>
+        </div>
+
+        <!-- Section 2: Methodology -->
+        <h2 id="methodology">2. The Methodology: AI as Research Partner</h2>
+
+        <p>
+            Before diving into the specifics, let me outline the methodological principles we followed.
+            These emerged partly from prior experience with LLMs and partly from trial and error during
+            this project.
+        </p>
+
+        <h3>Principle 1: Structured Iteration</h3>
+
+        <p>
+            We didn't try to build the model in one shot. Instead, we planned a 10-version progression,
+            each building on the last. This mirrors good software engineering practice, but it's
+            especially important with LLMs because:
+        </p>
+
+        <ul>
+            <li>Context windows are limited—breaking work into chunks helps</li>
+            <li>Each version can be validated before moving on</li>
+            <li>Mistakes in early versions can be caught and corrected</li>
+            <li>The AI can reference previous versions for consistency</li>
+        </ul>
+
+        <div class="conversation-block">
+            <div class="prompt-block">
+                <div class="prompt-label">Human Prompt</div>
+                <pre class="prompt-text">I want to create a mathematical model for AI-accelerated biological discovery.
+Let's plan this as a 10-version iterative build:
+- v0.1-0.3: Core model structure
+- v0.4-0.5: Detailed parameters
+- v0.6-0.7: Uncertainty quantification
+- v0.8-0.9: Sensitivity analysis + policy
+- v1.0: Integration and review
+
+For each version, create a PROJECT_BIBLE.md that tracks all decisions,
+parameters, and rationale. This will be our source of truth.</pre>
+            </div>
+            <div class="response-block">
+                <div class="response-label">Claude Response (excerpt)</div>
+                <div class="response-text">
+                    <p>Excellent approach. A structured 10-version build with a living PROJECT_BIBLE.md will ensure consistency and traceability. Here's my proposed structure:</p>
+                    <p><strong>PROJECT_BIBLE.md Structure:</strong></p>
+                    <ul>
+                        <li>Section 1: Model Overview & Objectives</li>
+                        <li>Section 2: Core Equations (versioned)</li>
+                        <li>Section 3: Parameter Registry (with sources)</li>
+                        <li>Section 4: Key Assumptions & Rationale</li>
+                        <li>Section 5: Version History & Changelog</li>
+                        <li>Section 6: Open Questions & Decisions Needed</li>
+                    </ul>
+                    <p>This gives us a single source of truth that evolves with the model. Should I create the initial v0.1 PROJECT_BIBLE.md now?</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>Principle 2: Role Assignment for Critical Review</h3>
+
+        <p>
+            One of the most powerful techniques we discovered was assigning the AI specific expert
+            personas for review. When you ask Claude "what do you think of this model?", you often
+            get generic, agreeable feedback. But when you ask "review this as a skeptical statistician
+            who specializes in uncertainty quantification," you get much more targeted criticism.
+        </p>
+
+        <div class="conversation-block">
+            <div class="prompt-block">
+                <div class="prompt-label">Human Prompt</div>
+                <pre class="prompt-text">I want you to review this model from 5 expert perspectives.
+For each expert, provide:
+1. Their specific concerns about methodology
+2. What they would demand to see before publication
+3. Priority fixes (P1 = must fix, P2 = should fix, P3 = nice to have)
+
+The experts are:
+- Dr. Rodriguez: Statistician specializing in Monte Carlo methods
+- Dr. Mitchell: Health economist focused on QALY calculations
+- Dr. Volkov: AI researcher skeptical of acceleration claims
+- Dr. Nakamura: Former FDA reviewer
+- Dr. Patel: Policy analyst focused on implementation</pre>
+            </div>
+        </div>
+
+        <p>
+            This prompt generated 47 specific issues across the five "experts," including several
+            we hadn't considered—like the need for disease-specific QALY distributions (Dr. Mitchell)
+            and the importance of regulatory lag time in our policy calculations (Dr. Nakamura).
+        </p>
+
+        <h3>Principle 3: Explicit Verification Steps</h3>
+
+        <p>
+            LLMs can hallucinate, especially with numbers. We built verification into the workflow:
+        </p>
+
+        <ul>
+            <li><strong>Parameter sourcing:</strong> Every parameter required a citation or explicit "expert estimate" flag</li>
+            <li><strong>Sanity checks:</strong> After each calculation, we asked "does this pass the smell test?"</li>
+            <li><strong>Convergence diagnostics:</strong> Monte Carlo results required explicit convergence verification</li>
+            <li><strong>Cross-validation:</strong> Key results were checked against external benchmarks (e.g., Amodei's estimates)</li>
+        </ul>
+
+        <div class="warning-box">
+            <h4>Caution</h4>
+            <p>
+                AI-generated numbers should never be trusted without verification. We found several
+                instances where Claude confidently produced plausible-sounding but incorrect calculations.
+                Always run the code yourself and check outputs against external sources.
+            </p>
+        </div>
+
+        <!-- Section 3: Build Process -->
+        <h2 id="build-process">3. The Build Process: Version by Version</h2>
+
+        <p>
+            Here's how the model evolved across 10 versions. Each version had specific objectives,
+            and we didn't move to the next until the current version was validated.
+        </p>
+
+        <div class="version-timeline">
+            <div class="version-item">
+                <span class="version-tag">v0.1</span>
+                <h4 class="version-title">Conceptual Framework</h4>
+                <p class="version-desc">
+                    Established the 10-stage drug discovery pipeline. Defined what "acceleration" means
+                    mathematically. Created initial PROJECT_BIBLE.md. Key decision: model cumulative
+                    progress rather than time-to-completion.
+                </p>
+            </div>
+
+            <div class="version-item">
+                <span class="version-tag">v0.2</span>
+                <h4 class="version-title">Core Equations</h4>
+                <p class="version-desc">
+                    Formalized the AI multiplier function M(t) = 1 + (M_max - 1)(1 - e^{-kA(t)}).
+                    Defined AI capability growth A(t) = A_0(1 + g_ai)^t. Established feedback loops
+                    between research output and AI capability.
+                </p>
+            </div>
+
+            <div class="version-item">
+                <span class="version-tag">v0.3</span>
+                <h4 class="version-title">Stage-Specific Parameters</h4>
+                <p class="version-desc">
+                    Assigned acceleration factors to each pipeline stage. Literature review for
+                    baseline success rates and timelines. Created scenario framework (pessimistic,
+                    baseline, optimistic, Amodei upper bound).
+                </p>
+            </div>
+
+            <div class="version-item">
+                <span class="version-tag">v0.4</span>
+                <h4 class="version-title">Parameter Calibration</h4>
+                <p class="version-desc">
+                    Deep dive into parameter sourcing. Added FDA clinical trial data (2015-2023).
+                    Calibrated g_ai against historical AI benchmarks. Documented all sources in
+                    parameter registry.
+                </p>
+            </div>
+
+            <div class="version-item">
+                <span class="version-tag">v0.5</span>
+                <h4 class="version-title">Disease-Specific Modules</h4>
+                <p class="version-desc">
+                    Extended model for oncology, CNS, infectious disease, and rare disease domains.
+                    Added domain-specific multipliers. Created cure probability calculations.
+                </p>
+            </div>
+
+            <div class="version-item">
+                <span class="version-tag">v0.6</span>
+                <h4 class="version-title">Monte Carlo Framework</h4>
+                <p class="version-desc">
+                    Implemented Latin Hypercube Sampling (N=10,000). Defined probability distributions
+                    for all uncertain parameters. Added convergence diagnostics. First uncertainty
+                    bounds: 80% CI [3.2x, 9.5x].
+                </p>
+            </div>
+
+            <div class="version-item">
+                <span class="version-tag">v0.7</span>
+                <h4 class="version-title">Sobol Sensitivity Analysis</h4>
+                <p class="version-desc">
+                    Implemented Saltelli estimator for first-order and total-order indices.
+                    Key finding: g_ai dominates at S_i = 0.915. Added parameter correlation
+                    analysis using Iman-Conover method.
+                </p>
+            </div>
+
+            <div class="version-item">
+                <span class="version-tag">v0.8</span>
+                <h4 class="version-title">Policy Analysis Module</h4>
+                <p class="version-desc">
+                    Added 12 policy interventions with cost estimates. Developed ROI calculation
+                    framework. Ranked interventions by expected value. Created tier system for
+                    prioritization.
+                </p>
+            </div>
+
+            <div class="version-item">
+                <span class="version-tag">v0.9</span>
+                <h4 class="version-title">Expert Review Round 1</h4>
+                <p class="version-desc">
+                    Simulated 5-expert peer review. Identified 47 issues across priority levels.
+                    Implemented P1 fixes: QALY correction factor, adaptive trial cost adjustment,
+                    regulatory lag modeling.
+                </p>
+            </div>
+
+            <div class="version-item">
+                <span class="version-tag">v1.0</span>
+                <h4 class="version-title">Final Integration</h4>
+                <p class="version-desc">
+                    Addressed remaining P2 issues. Full Sobol indices with bootstrap CIs.
+                    Disease-specific QALY uncertainty. Final validation and documentation.
+                    Model complete and publication-ready.
+                </p>
+            </div>
+        </div>
+
+        <h3>Example: Building the Monte Carlo Module (v0.6)</h3>
+
+        <p>
+            Let me show a detailed example of how one version was built. In v0.6, we needed to add
+            uncertainty quantification via Monte Carlo simulation.
+        </p>
+
+        <div class="conversation-block">
+            <div class="prompt-block">
+                <div class="prompt-label">Human Prompt</div>
+                <pre class="prompt-text">Now let's add uncertainty quantification. I want:
+1. Monte Carlo simulation with N=10,000 samples
+2. Latin Hypercube Sampling for efficient coverage
+3. Probability distributions for each parameter based on our confidence
+4. Convergence diagnostics to verify N is sufficient
+5. Output: mean, median, 80% CI, 95% CI for acceleration factor
+
+For the parameter distributions, use:
+- Lognormal for positive unbounded (g_ai, multipliers)
+- Beta for probabilities (success rates)
+- Triangular for bounded estimates (QALY)
+- Uniform where we have high uncertainty within bounds
+
+Create monte_carlo.py with clean, documented code.</pre>
+            </div>
+            <div class="response-block">
+                <div class="response-label">Claude Response (excerpt)</div>
+                <div class="response-text">
+                    <p>I'll create a comprehensive Monte Carlo module. Here's the structure:</p>
+                    <code>monte_carlo.py</code>
+                    <pre style="background: #f5f5f5; padding: 12px; border-radius: 4px; overflow-x: auto; font-size: 0.85rem;">
+@dataclass
+class ParameterDistribution:
+    """Defines uncertainty distribution for a parameter."""
+    name: str
+    distribution: str  # 'lognormal', 'beta', 'triangular', 'uniform'
+    params: dict
+
+PARAMETER_DISTRIBUTIONS = {
+    'g_ai': ParameterDistribution(
+        name='AI growth rate',
+        distribution='lognormal',
+        params={'mu': np.log(0.25), 'sigma': 0.3}  # median=0.25, ~80% CI [0.15, 0.42]
+    ),
+    'p_phase2_base': ParameterDistribution(
+        name='Phase 2 success rate',
+        distribution='beta',
+        params={'alpha': 6, 'beta': 14}  # mean=0.30, captures FDA data uncertainty
+    ),
+    # ... additional parameters
+}
+
+def run_monte_carlo(n_samples: int = 10000, seed: int = 42) -> MonteCarloResults:
+    """Run full Monte Carlo simulation with LHS sampling."""
+    np.random.seed(seed)
+    samples = latin_hypercube_sample(n_samples, PARAMETER_DISTRIBUTIONS)
+    results = [run_model_with_params(s) for s in samples]
+    return aggregate_results(results)</pre>
+                    <p>The convergence diagnostic checks if the running mean stabilizes (CV < 1% over last 10% of samples).</p>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            After Claude generated the initial code, we ran it, encountered an import error (scipy
+            wasn't available), and iterated:
+        </p>
+
+        <div class="conversation-block">
+            <div class="prompt-block">
+                <div class="prompt-label">Human Prompt</div>
+                <pre class="prompt-text">scipy isn't available in this environment. Can you implement
+Latin Hypercube Sampling using only numpy? Also, the lognormal
+sampling looks off—verify the parameterization.</pre>
+            </div>
+            <div class="response-block">
+                <div class="response-label">Claude Response (excerpt)</div>
+                <div class="response-text">
+                    <p>You're right—I'll implement pure numpy LHS. And good catch on the lognormal: numpy's <code>random.lognormal</code> uses μ and σ of the underlying normal, not the lognormal itself. Let me fix both:</p>
+                    <pre style="background: #f5f5f5; padding: 12px; border-radius: 4px; overflow-x: auto; font-size: 0.85rem;">
+def latin_hypercube_sample(n_samples: int, n_dims: int) -> np.ndarray:
+    """Pure numpy implementation of Latin Hypercube Sampling."""
+    result = np.zeros((n_samples, n_dims))
+    for dim in range(n_dims):
+        # Create evenly spaced intervals
+        intervals = np.linspace(0, 1, n_samples + 1)
+        # Sample uniformly within each interval
+        points = np.random.uniform(intervals[:-1], intervals[1:])
+        # Shuffle to remove correlation between dimensions
+        np.random.shuffle(points)
+        result[:, dim] = points
+    return result  # Returns values in [0,1], transform to target distributions</pre>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            This back-and-forth—generate, test, fix, iterate—was the typical pattern. Claude rarely
+            got everything right on the first try, but it was fast at iterating toward a working solution.
+        </p>
+
+        <!-- Section 4: Expert Review -->
+        <h2 id="expert-review">4. The Expert Review Experiment</h2>
+
+        <p>
+            One of the most valuable techniques we used was simulated expert review. Rather than
+            asking Claude for generic feedback, we created specific expert personas with distinct
+            perspectives and asked each to critique the model.
+        </p>
+
+        <div class="expert-grid">
+            <div class="expert-card">
+                <h4>Dr. Elena Rodriguez</h4>
+                <p class="role">Biostatistician, Stanford</p>
+                <p>Focused on Monte Carlo methodology, convergence, and sensitivity analysis rigor.</p>
+            </div>
+            <div class="expert-card">
+                <h4>Dr. James Mitchell</h4>
+                <p class="role">Health Economist, Harvard</p>
+                <p>Scrutinized QALY calculations, value assumptions, and cost-effectiveness methods.</p>
+            </div>
+            <div class="expert-card">
+                <h4>Dr. Alexei Volkov</h4>
+                <p class="role">AI Researcher, DeepMind</p>
+                <p>Skeptical of acceleration claims, pushed back on AI capability assumptions.</p>
+            </div>
+            <div class="expert-card">
+                <h4>Dr. Yuki Nakamura</h4>
+                <p class="role">Former FDA Reviewer</p>
+                <p>Questioned regulatory assumptions and policy implementation feasibility.</p>
+            </div>
+            <div class="expert-card">
+                <h4>Dr. Sarah Patel</h4>
+                <p class="role">Policy Analyst, Brookings</p>
+                <p>Focused on actionability of recommendations and political feasibility.</p>
+            </div>
+        </div>
+
+        <h3>Sample Expert Review Output</h3>
+
+        <div class="conversation-block">
+            <div class="prompt-block">
+                <div class="prompt-label">Human Prompt</div>
+                <pre class="prompt-text">Review the v0.8 model as Dr. Rodriguez (statistician).
+Be critical. What methodological issues would prevent
+you from recommending publication?</pre>
+            </div>
+            <div class="response-block">
+                <div class="response-label">Claude as Dr. Rodriguez</div>
+                <div class="response-text">
+                    <p><strong>Review: AI-Accelerated Biological Discovery Model v0.8</strong></p>
+                    <p><em>Overall Assessment: B+ (Promising but needs methodological refinement)</em></p>
+
+                    <p><strong>Critical Issues (Must Address):</strong></p>
+                    <ol>
+                        <li><strong>Sobol indices are approximated, not properly computed.</strong> You're using correlation coefficients as a proxy for sensitivity. This is a common shortcut but it misses interaction effects. Implement proper Saltelli estimator or acknowledge this limitation prominently.</li>
+                        <li><strong>No convergence proof for 10,000 samples.</strong> You claim convergence but don't show diagnostics. Add: running mean plots, Gelman-Rubin R-hat, effective sample size.</li>
+                        <li><strong>Parameter correlations ignored.</strong> You treat g_ai and M_max as independent, but they're likely positively correlated (better AI → better tools). Use Iman-Conover or copulas to induce realistic correlation structure.</li>
+                    </ol>
+
+                    <p><strong>Moderate Issues (Should Address):</strong></p>
+                    <ol>
+                        <li>Bootstrap CIs on Sobol indices would strengthen claims about parameter importance.</li>
+                        <li>Consider reporting both 80% and 95% CIs—80% alone may seem like cherry-picking.</li>
+                    </ol>
+
+                    <p><em>I would not recommend publication until issues 1-3 are addressed.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            This review caught real issues we had overlooked. The criticism about correlation structure
+            (issue #3) led us to implement the Iman-Conover method in v0.9, which changed our variance
+            estimates by 15%.
+        </p>
+
+        <h3>Aggregated Review Results</h3>
+
+        <p>
+            Across all five experts, we identified 47 distinct issues:
+        </p>
+
+        <table class="blog-table">
+            <thead>
+                <tr>
+                    <th>Expert</th>
+                    <th>P1 (Critical)</th>
+                    <th>P2 (Important)</th>
+                    <th>P3 (Minor)</th>
+                    <th>Key Theme</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dr. Rodriguez (Stats)</td>
+                    <td>3</td>
+                    <td>5</td>
+                    <td>4</td>
+                    <td>Methodological rigor</td>
+                </tr>
+                <tr>
+                    <td>Dr. Mitchell (Econ)</td>
+                    <td>2</td>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>QALY assumptions</td>
+                </tr>
+                <tr>
+                    <td>Dr. Volkov (AI)</td>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>AI capability skepticism</td>
+                </tr>
+                <tr>
+                    <td>Dr. Nakamura (FDA)</td>
+                    <td>2</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>Regulatory realism</td>
+                </tr>
+                <tr>
+                    <td>Dr. Patel (Policy)</td>
+                    <td>1</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>Implementation details</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insight-box">
+            <h4>Technique That Worked</h4>
+            <p>
+                Asking for criticism from a specific persona is more effective than asking for generic
+                feedback. "What would a skeptical statistician say?" produces much better results than
+                "Is this analysis good?" The persona gives the AI permission to be critical.
+            </p>
+        </div>
+
+        <!-- Section 5: Webpage Review -->
+        <h2 id="webpage-review">5. The 8-Expert Webpage Review</h2>
+
+        <p>
+            We applied the same multi-expert review technique when planning the publication format.
+            After deciding on a single-page web publication, we created 8 expert personas to review
+            the webpage plan:
+        </p>
+
+        <table class="blog-table">
+            <thead>
+                <tr>
+                    <th>Expert</th>
+                    <th>Domain</th>
+                    <th>Grade</th>
+                    <th>Top Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dr. Sarah Chen</td>
+                    <td>Data Visualization</td>
+                    <td>B+</td>
+                    <td>Simplify to 5 charts max, use dot plot not tornado</td>
+                </tr>
+                <tr>
+                    <td>Prof. Michael Torres</td>
+                    <td>Science Communication</td>
+                    <td>A-</td>
+                    <td>Add compelling hook + human narrative thread</td>
+                </tr>
+                <tr>
+                    <td>Dr. Aisha Patel</td>
+                    <td>UX Design</td>
+                    <td>B</td>
+                    <td>Add sticky TOC, progress bar, mobile navigation</td>
+                </tr>
+                <tr>
+                    <td>Dr. James Morrison</td>
+                    <td>Computational Biology</td>
+                    <td>A-</td>
+                    <td>Add parameter transparency + validation section</td>
+                </tr>
+                <tr>
+                    <td>Elena Kowalski</td>
+                    <td>Tech Journalism</td>
+                    <td>B+</td>
+                    <td>Create 4 shareable social media assets</td>
+                </tr>
+                <tr>
+                    <td>Dr. Robert Kim</td>
+                    <td>Health Policy</td>
+                    <td>B+</td>
+                    <td>Add stakeholder mapping + implementation pathways</td>
+                </tr>
+                <tr>
+                    <td>Dr. Lisa Zhang</td>
+                    <td>Statistics</td>
+                    <td>A-</td>
+                    <td>Improve CI interpretation + sensitivity tables</td>
+                </tr>
+                <tr>
+                    <td>Marcus Webb</td>
+                    <td>Frontend Development</td>
+                    <td>B+</td>
+                    <td>Use Chart.js, scope MVP carefully</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Consensus and Disagreements</h3>
+
+        <p>
+            The 8-expert review produced both unanimous recommendations and interesting disagreements:
+        </p>
+
+        <p><strong>Unanimous (all 8 experts agreed):</strong></p>
+        <ul>
+            <li>Simplify visualizations to 5 maximum</li>
+            <li>Add shareable social media assets</li>
+            <li>Improve confidence interval communication</li>
+            <li>Expand parameter transparency with hoverable sources</li>
+        </ul>
+
+        <p><strong>Split opinions:</strong></p>
+        <ul>
+            <li><em>Interactive parameter explorer:</em> Visualization and journalism experts wanted it inline; UX and dev experts recommended a separate page (we chose separate page)</li>
+            <li><em>Dark mode:</em> UX expert recommended it; dev expert flagged scope concerns (we deferred to post-launch)</li>
+        </ul>
+
+        <p>
+            This process directly shaped the final webpage. The UX expert's recommendation to add a
+            progress bar and sticky navigation? Implemented. The science comm expert's critique of
+            our weak opening hook? We rewrote it. The dev expert's warning about Chart.js vs D3.js
+            complexity? We went with Chart.js.
+        </p>
+
+        <!-- Section 6: Lessons Learned -->
+        <h2 id="lessons">6. Lessons Learned</h2>
+
+        <h3>What Worked Well</h3>
+
+        <ol>
+            <li>
+                <strong>Iterative versioning with clear milestones.</strong>
+                Breaking the work into 10 versions with explicit objectives prevented scope creep
+                and made progress visible. Each version was small enough to validate before moving on.
+            </li>
+            <li>
+                <strong>The PROJECT_BIBLE.md pattern.</strong>
+                Having a single source of truth for all decisions, parameters, and rationale was
+                invaluable. When Claude's context reset between sessions, we could re-orient it
+                by sharing the Bible.
+            </li>
+            <li>
+                <strong>Explicit role/persona assignment for criticism.</strong>
+                "Review this as Dr. X who specializes in Y" produced dramatically better feedback
+                than "what do you think?" The persona gives Claude permission to be critical.
+            </li>
+            <li>
+                <strong>Asking for criticism before solutions.</strong>
+                When we asked "what's wrong with this?" before "how do we fix it?", we got more
+                thorough problem identification. Jumping straight to fixes often missed issues.
+            </li>
+            <li>
+                <strong>Running the code after each generation.</strong>
+                Never trust AI-generated code without running it. We caught numerous bugs this
+                way—from import errors to off-by-one mistakes to incorrect parameterizations.
+            </li>
+        </ol>
+
+        <h3>What Was Challenging</h3>
+
+        <ol>
+            <li>
+                <strong>AI can be overly agreeable.</strong>
+                Claude's default mode is helpful and positive. Getting genuine criticism requires
+                explicit prompting ("be harsh", "what would a skeptic say", etc.).
+            </li>
+            <li>
+                <strong>Numerical accuracy is unreliable.</strong>
+                Claude occasionally produced confident-sounding but incorrect numbers. Every
+                quantitative claim needed manual verification.
+            </li>
+            <li>
+                <strong>Context window limitations.</strong>
+                Long sessions required periodic summarization and re-grounding. The PROJECT_BIBLE
+                helped, but some nuance was inevitably lost.
+            </li>
+            <li>
+                <strong>Consistency across sessions.</strong>
+                When starting a new session, Claude might make slightly different assumptions.
+                Explicit re-statement of constraints was necessary.
+            </li>
+        </ol>
+
+        <div class="warning-box">
+            <h4>Critical Lesson</h4>
+            <p>
+                AI-assisted ≠ AI-generated. The human remains essential for: setting direction,
+                verifying correctness, making judgment calls, and taking responsibility for the output.
+                Don't let the AI's fluency fool you into thinking it's always right.
+            </p>
+        </div>
+
+        <h3>Recommendations for Others</h3>
+
+        <p>If you want to try AI-assisted research, here's our advice:</p>
+
+        <ol>
+            <li><strong>Start with structure.</strong> Create an outline and versioning plan before diving in.</li>
+            <li><strong>Create a "Bible" document.</strong> Track all decisions, parameters, and rationale in one place.</li>
+            <li><strong>Use personas for review.</strong> Create adversarial experts with specific expertise.</li>
+            <li><strong>Verify everything numerical.</strong> Run the code. Check the math. Cross-reference sources.</li>
+            <li><strong>Document as you go.</strong> You'll want to explain your process later.</li>
+            <li><strong>Be explicit about uncertainty.</strong> AI makes it easy to sound confident. Resist that temptation.</li>
+        </ol>
+
+        <!-- Section 7: Bigger Picture -->
+        <h2 id="bigger-picture">7. The Bigger Picture</h2>
+
+        <h3>Is This "AI-Assisted" or "AI-Generated" Research?</h3>
+
+        <p>
+            An important question: who deserves credit for this work? Is it human research with AI
+            assistance, or AI research with human oversight?
+        </p>
+
+        <p>
+            Our view: this is genuinely collaborative work where both parties made essential contributions:
+        </p>
+
+        <table class="blog-table">
+            <thead>
+                <tr>
+                    <th>Human Contribution</th>
+                    <th>AI Contribution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Research question and framing</td>
+                    <td>Literature synthesis and parameter identification</td>
+                </tr>
+                <tr>
+                    <td>Methodological choices</td>
+                    <td>Code implementation</td>
+                </tr>
+                <tr>
+                    <td>Validation and verification</td>
+                    <td>Iteration speed and breadth</td>
+                </tr>
+                <tr>
+                    <td>Final judgment calls</td>
+                    <td>Multi-perspective critique</td>
+                </tr>
+                <tr>
+                    <td>Responsibility for claims</td>
+                    <td>Draft generation and refinement</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            Neither party could have done this alone. A human working without AI would have taken
+            10x longer (or never finished). Claude working without human guidance would have produced
+            something plausible-sounding but likely incorrect in important ways.
+        </p>
+
+        <h3>Implications for Scientific Publishing</h3>
+
+        <p>
+            This case study raises questions the scientific community will need to address:
+        </p>
+
+        <ul>
+            <li><strong>Attribution:</strong> How should AI contributions be credited? We chose "Model developed with assistance from Claude (Anthropic)" in our methods section.</li>
+            <li><strong>Reproducibility:</strong> Should conversation logs be part of supplementary materials? We've made ours available.</li>
+            <li><strong>Verification:</strong> Do AI-assisted papers need additional scrutiny? Probably yes, at least until norms develop.</li>
+            <li><strong>Speed vs. rigor:</strong> AI enables faster research, but does speed compromise quality? Our expert review process was an attempt to maintain rigor.</li>
+        </ul>
+
+        <blockquote>
+            <p>
+                "The goal isn't to replace human researchers with AI. It's to augment human capabilities
+                so we can tackle bigger questions, iterate faster, and catch more of our own mistakes.
+                AI is a tool. Like all tools, its value depends on how skillfully it's used."
+            </p>
+        </blockquote>
+
+        <!-- Section 8: Resources -->
+        <h2 id="resources">8. Resources & Reproducibility</h2>
+
+        <p>
+            In the spirit of open science, we're making the full materials available:
+        </p>
+
+        <h3>Available Resources</h3>
+
+        <ul>
+            <li><strong><a href="index.html">The Model</a></strong> – Full interactive results and visualizations</li>
+            <li><strong><a href="supplementary.html">Supplementary Materials</a></strong> – Complete parameter tables, equations, data downloads</li>
+            <li><strong><a href="https://github.com/jang1563/ai-bio-model" target="_blank">GitHub Repository</a></strong> – All source code, PROJECT_BIBLE.md, version history</li>
+            <li><strong>Conversation Logs</strong> – Available in the repository as JSONL files</li>
+        </ul>
+
+        <h3>Reproducing This Work</h3>
+
+        <p>To replicate or extend this model:</p>
+
+        <ol>
+            <li>Clone the repository</li>
+            <li>Read PROJECT_BIBLE.md to understand the structure</li>
+            <li>Run <code>python v1.0/run_model.py</code> to regenerate all results</li>
+            <li>Review the conversation logs to see how decisions were made</li>
+        </ol>
+
+        <h3>Invitation</h3>
+
+        <p>
+            We encourage others to:
+        </p>
+
+        <ul>
+            <li>Critique our methodology and assumptions</li>
+            <li>Extend the model with additional parameters or domains</li>
+            <li>Apply the AI-assisted research methodology to other questions</li>
+            <li>Share your own experiences with AI-assisted research</li>
+        </ul>
+
+        <div class="cta-box">
+            <h3>Explore the Model</h3>
+            <p>
+                See the full results of this AI-assisted research project—including interactive
+                visualizations, policy recommendations, and disease-specific projections.
+            </p>
+            <a href="index.html" class="btn">View the Model →</a>
+        </div>
+
+        <!-- Social Sharing -->
+        <div class="social-share">
+            <span class="social-share-label">Share this article:</span>
+            <a href="https://twitter.com/intent/tweet?text=AI-Assisted%20Research%3A%20A%20Case%20Study%20in%20Building%20Complex%20Models%20with%20LLMs&url=https://jang1563.github.io/ai-bio-acceleration/process.html"
+               target="_blank" class="share-btn twitter" title="Share on Twitter">𝕏</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://jang1563.github.io/ai-bio-acceleration/process.html"
+               target="_blank" class="share-btn linkedin" title="Share on LinkedIn">in</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://jang1563.github.io/ai-bio-acceleration/process.html"
+               target="_blank" class="share-btn facebook" title="Share on Facebook">f</a>
+            <button class="share-btn copy-link" onclick="copyPageLink()" title="Copy link">🔗</button>
+        </div>
+
+        <hr style="margin: var(--space-3xl) 0; border: none; border-top: 1px solid var(--neutral-200);">
+
+        <p style="font-size: 0.95rem; color: var(--neutral-500); text-align: center;">
+            <em>
+                This blog post was itself written with AI assistance, using the same methodology
+                described above. We used Claude to draft sections, then edited for accuracy and voice.
+                The conversation logs are available in the repository.
+            </em>
+        </p>
+
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <h3>AI-Accelerated Biological Discovery</h3>
+                    <p>
+                        A quantitative model exploring AI's potential impact on drug discovery,
+                        built using AI-assisted research methods.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Pages</h4>
+                    <a href="index.html">Main Model</a>
+                    <a href="supplementary.html">Supplementary</a>
+                    <a href="process.html">Process</a>
+                    <a href="https://github.com/jang1563/ai-bio-model" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 AI Bio Acceleration Model Project. Open source under MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script>
+        // Reading Progress Bar
+        window.addEventListener('scroll', function() {
+            const article = document.querySelector('.blog-content');
+            const progressBar = document.getElementById('readingProgress');
+
+            if (article && progressBar) {
+                const articleTop = article.offsetTop;
+                const articleHeight = article.offsetHeight;
+                const windowHeight = window.innerHeight;
+                const scrollY = window.scrollY;
+
+                // Calculate progress through the article
+                const start = articleTop - windowHeight;
+                const end = articleTop + articleHeight - windowHeight;
+                const progress = Math.max(0, Math.min(100, ((scrollY - start) / (end - start)) * 100));
+
+                progressBar.style.width = progress + '%';
+            }
+        });
+
+        // Copy Page Link
+        function copyPageLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                const btn = document.querySelector('.copy-link');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✓';
+                btn.style.background = 'var(--success)';
+                btn.style.color = 'white';
+                setTimeout(function() {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                }, 2000);
+            });
+        }
+
+        // Add anchor links to headings
+        document.addEventListener('DOMContentLoaded', function() {
+            const headings = document.querySelectorAll('.blog-content h2[id], .blog-content h3[id]');
+            headings.forEach(function(heading) {
+                const anchor = document.createElement('a');
+                anchor.className = 'anchor-link';
+                anchor.href = '#' + heading.id;
+                anchor.innerHTML = '#';
+                anchor.setAttribute('aria-label', 'Link to this section');
+                heading.insertBefore(anchor, heading.firstChild);
+            });
+        });
+    </script>
+</body>
+</html>
