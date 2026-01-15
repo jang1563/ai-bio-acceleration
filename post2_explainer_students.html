@@ -3,665 +3,915 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Why Can't AI Just Cure Everything Already? - A High School Guide</title>
+    <title>Why Can't AI Just Cure Everything Already?</title>
 
-    <!-- SEO & Social -->
-    <meta name="description" content="A High School Guide to the Biggest Plot Twist in Science. If AI is 24x faster, why don't we have 24x more cures?">
-    <meta name="keywords" content="AI, biology, drug discovery, high school, education, science">
-    <meta name="author" content="AI Bio Acceleration Model Project">
+    <meta name="description" content="A High School Guide to the Biggest Plot Twist in Science">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --border-color: #2a2a35;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        .article-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-back {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-back:hover {
+            color: var(--accent-green);
+        }
+
+        .nav-progress {
+            height: 3px;
+            background: var(--border-color);
+            border-radius: 2px;
+            width: 200px;
+            overflow: hidden;
+        }
+
+        .nav-progress-bar {
+            height: 100%;
+            background: var(--accent-green);
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        /* Article Container */
         .article-container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 120px 20px 60px;
+            padding: 120px 30px 80px;
         }
+
+        /* Header */
         .article-header {
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 60px;
+            text-align: center;
         }
+
         .article-tag {
             display: inline-block;
-            background: #10b981;
+            background: var(--accent-green);
             color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
+            padding: 6px 16px;
+            border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .article-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 20px;
         }
-        .article-header h1 {
-            font-size: 2.5rem;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            color: var(--text-primary);
-        }
+
         .article-subtitle {
             font-size: 1.3rem;
             color: var(--text-secondary);
             font-style: italic;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
+
         .article-meta {
             display: flex;
-            gap: 20px;
+            justify-content: center;
+            gap: 30px;
             font-size: 0.9rem;
             color: var(--text-muted);
         }
-        .article-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-primary);
-        }
+
+        /* Content */
         .article-content h2 {
             font-size: 1.8rem;
-            margin-top: 50px;
-            margin-bottom: 20px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
+            font-weight: 700;
+            margin-top: 70px;
+            margin-bottom: 25px;
             color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
+
+        .section-emoji {
+            font-size: 2rem;
+        }
+
         .article-content h3 {
-            font-size: 1.4rem;
-            margin-top: 35px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 40px;
             margin-bottom: 15px;
             color: var(--text-primary);
         }
+
         .article-content p {
             margin-bottom: 1.5em;
-        }
-        .article-content blockquote {
-            border-left: 4px solid #10b981;
-            padding-left: 20px;
-            margin: 30px 0;
-            font-style: italic;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            background: var(--bg-secondary);
-            padding: 20px;
-            border-radius: 0 8px 8px 0;
         }
-        .article-content blockquote strong {
+
+        .article-content strong {
             color: var(--text-primary);
         }
-        .article-content ul, .article-content ol {
-            margin-bottom: 1.5em;
-            padding-left: 30px;
+
+        /* Pizza Animation */
+        .pizza-demo {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
         }
-        .article-content li {
-            margin-bottom: 0.5em;
-        }
-        .article-content table {
-            width: 100%;
-            border-collapse: collapse;
+
+        .pizza-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin: 30px 0;
-            font-size: 0.95rem;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .article-content th, .article-content td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
+
+        .pizza-step {
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+            padding: 15px 10px;
+            background: var(--bg-dark);
+            border-radius: 12px;
+            transition: all 0.3s;
+            position: relative;
         }
-        .article-content th {
-            background: var(--bg-secondary);
+
+        .pizza-step.highlight {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.3) 0%, rgba(59, 130, 246, 0.3) 100%);
+            transform: scale(1.05);
+        }
+
+        .pizza-step-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .pizza-step-name {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .pizza-step-time {
+            font-size: 0.85rem;
             font-weight: 600;
+            color: var(--text-primary);
         }
-        .article-content tr:hover {
-            background: var(--bg-secondary);
+
+        .pizza-result {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
         }
-        .article-content a {
-            color: #10b981;
-            text-decoration: none;
+
+        .result-card {
+            background: var(--bg-dark);
+            border-radius: 12px;
+            padding: 20px 30px;
+            text-align: center;
         }
-        .article-content a:hover {
-            text-decoration: underline;
+
+        .result-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
         }
-        .article-content hr {
-            border: none;
-            border-top: 1px solid var(--border-color);
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .result-value.before {
+            color: var(--text-secondary);
+        }
+
+        .result-value.after {
+            color: var(--accent-green);
+        }
+
+        .result-savings {
+            font-size: 0.9rem;
+            color: var(--accent-orange);
+            margin-top: 10px;
+        }
+
+        /* Interactive Slider */
+        .speedup-slider {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
             margin: 40px 0;
         }
-        .back-to-blog {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-secondary);
-            text-decoration: none;
+
+        .slider-header {
+            text-align: center;
             margin-bottom: 30px;
-            font-size: 0.9rem;
         }
-        .back-to-blog:hover {
-            color: #10b981;
+
+        .slider-header h4 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
         }
-        .emoji-header {
-            font-size: 1.5rem;
-            margin-right: 10px;
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
         }
-        .callout-box {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
-            border: 1px solid #10b981;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 30px 0;
+
+        .slider-container input[type="range"] {
+            flex: 1;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            outline: none;
+            -webkit-appearance: none;
         }
-        .callout-box strong {
-            color: #10b981;
-        }
-        details {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px 20px;
-            margin: 20px 0;
-        }
-        details summary {
+
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--accent-green);
+            border-radius: 50%;
             cursor: pointer;
-            font-weight: 600;
-            color: #10b981;
         }
-        details[open] summary {
+
+        .slider-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .slider-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .slider-result-card {
+            background: var(--bg-dark);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .slider-result-card .value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+        }
+
+        .slider-result-card .label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        /* Analogy Cards */
+        .analogy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .analogy-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .analogy-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-green);
+        }
+
+        .analogy-icon {
+            font-size: 3rem;
             margin-bottom: 15px;
         }
+
+        .analogy-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .analogy-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Work Type Cards */
+        .work-type-grid {
+            display: grid;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .work-type-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .work-type-icon {
+            font-size: 3rem;
+        }
+
+        .work-type-content h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .work-type-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .work-type-speedup {
+            text-align: center;
+            padding: 15px 20px;
+            background: var(--bg-dark);
+            border-radius: 12px;
+        }
+
+        .work-type-speedup .value {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .work-type-speedup .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .work-type-speedup.high .value { color: var(--accent-green); }
+        .work-type-speedup.medium .value { color: var(--accent-orange); }
+        .work-type-speedup.low .value { color: var(--accent-red); }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .chart-canvas-wrapper {
+            position: relative;
+            height: 300px;
+        }
+
+        /* Quiz Section */
         .quiz-section {
-            background: var(--bg-secondary);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border: 1px solid var(--accent-green);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+        }
+
+        .quiz-section h3 {
+            color: var(--accent-green);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .quiz-question {
+            background: var(--bg-card);
             border-radius: 12px;
             padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-question p {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .quiz-answer {
+            display: none;
+            padding: 15px;
+            background: var(--bg-dark);
+            border-radius: 8px;
+            margin-top: 15px;
+            color: var(--text-secondary);
+        }
+
+        .quiz-answer.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quiz-btn {
+            background: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .quiz-btn:hover {
+            background: #0d9668;
+            transform: scale(1.02);
+        }
+
+        /* Big Number Callout */
+        .big-number {
+            text-align: center;
+            padding: 50px 30px;
+            margin: 40px 0;
+        }
+
+        .big-number .value {
+            font-size: 5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .big-number .label {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+
+        /* Insight Box */
+        .insight-box {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 0 12px 12px 0;
+            padding: 25px 30px;
+            margin: 40px 0;
+        }
+
+        .insight-box h4 {
+            color: var(--accent-green);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .insight-box p {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* Career Cards */
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
             margin: 30px 0;
         }
-        .quiz-section h3 {
-            margin-top: 0;
-            color: #10b981;
-        }
-        .glossary {
+
+        .career-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
         }
-        .glossary dt {
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-top: 15px;
+
+        .career-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-3px);
         }
-        .glossary dt:first-child {
-            margin-top: 0;
-        }
-        .glossary dd {
-            color: var(--text-secondary);
-            margin-left: 0;
+
+        .career-icon {
+            font-size: 2rem;
             margin-bottom: 10px;
         }
-        .summary-table {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 20px;
+
+        .career-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        .article-footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .article-footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .article-footer a {
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .article-header h1 {
+                font-size: 2rem;
+            }
+
+            .slider-results {
+                grid-template-columns: 1fr;
+            }
+
+            .work-type-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .big-number .value {
+                font-size: 3rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="nav-container" id="navbar">
+    <nav class="article-nav">
         <div class="nav-content">
-            <a href="index.html" class="nav-logo">AI Bio Acceleration</a>
-            <div class="nav-links" id="navLinks">
-                <a href="index.html#summary">Summary</a>
-                <a href="index.html#model">Model</a>
-                <a href="index.html#results">Results</a>
-                <a href="EXPLANATION_SIMPLE.html">Explainer</a>
-                <a href="blog.html" class="active">Blog</a>
-                <a href="process.html">Process</a>
+            <a href="blog.html" class="nav-back">← Back to Blog</a>
+            <div class="nav-progress">
+                <div class="nav-progress-bar" id="progressBar"></div>
             </div>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </nav>
 
     <article class="article-container">
-        <a href="blog.html" class="back-to-blog">← Back to Blog</a>
-
+        <!-- Header -->
         <header class="article-header">
             <span class="article-tag">Student Guide</span>
             <h1>Why Can't AI Just Cure Everything Already?</h1>
             <p class="article-subtitle">A High School Guide to the Biggest Plot Twist in Science</p>
             <div class="article-meta">
-                <span>📖 ~15 min read</span>
+                <span>📖 15 min read</span>
                 <span>🎓 No biology degree required</span>
             </div>
         </header>
 
         <div class="article-content">
-            <h2>The Promise That Seemed Too Good</h2>
-
-            <p>You've probably heard it: <strong>AI is going to revolutionize medicine.</strong> It can predict protein structures in minutes instead of years. It can screen millions of drug candidates in hours. It can analyze your genome before you finish lunch.</p>
+            <p>You've probably heard it: <strong>AI is going to revolutionize medicine.</strong> It can predict protein structures in minutes instead of years. It can screen millions of drug candidates in hours.</p>
 
             <p>So... where are all the cures?</p>
 
-            <p>If AI is 24x faster at predicting protein structures, why don't we have 24x more treatments? If computers can test 2 million new materials in a single study, why can't we just print the ones we need?</p>
-
             <p>This is the story of <strong>the biggest plot twist in modern science</strong>: why being 1000x faster at the thinking part doesn't mean we're 1000x faster at the doing part.</p>
 
-            <p>And weirdly, understanding this might be the most important thing you can learn about how science actually works.</p>
-
-            <hr>
-
-            <h2><span class="emoji-header">🍕</span>The Pizza Delivery Problem</h2>
+            <h2><span class="section-emoji">🍕</span> The Pizza Delivery Problem</h2>
 
             <p>Let me start with something you definitely understand: pizza delivery.</p>
 
-            <p>Imagine you're ordering pizza. The process looks like this:</p>
+            <!-- Interactive Pizza Demo -->
+            <div class="pizza-demo">
+                <h4 style="color: var(--text-primary); margin-bottom: 20px;">Pizza Delivery Timeline</h4>
+                <div class="pizza-timeline">
+                    <div class="pizza-step highlight" id="step-order">
+                        <div class="pizza-step-icon">📱</div>
+                        <div class="pizza-step-name">Order Online</div>
+                        <div class="pizza-step-time" id="order-time">1 min</div>
+                    </div>
+                    <div class="pizza-step">
+                        <div class="pizza-step-icon">👨‍🍳</div>
+                        <div class="pizza-step-name">Make Pizza</div>
+                        <div class="pizza-step-time">15 min</div>
+                    </div>
+                    <div class="pizza-step">
+                        <div class="pizza-step-icon">🔥</div>
+                        <div class="pizza-step-name">Bake</div>
+                        <div class="pizza-step-time">12 min</div>
+                    </div>
+                    <div class="pizza-step">
+                        <div class="pizza-step-icon">🚗</div>
+                        <div class="pizza-step-name">Deliver</div>
+                        <div class="pizza-step-time">20 min</div>
+                    </div>
+                    <div class="pizza-step">
+                        <div class="pizza-step-icon">🍕</div>
+                        <div class="pizza-step-name">Eat!</div>
+                        <div class="pizza-step-time">∞</div>
+                    </div>
+                </div>
 
-            <ol>
-                <li><strong>You decide what you want</strong> (2 minutes)</li>
-                <li><strong>You place the order online</strong> (1 minute)</li>
-                <li><strong>The kitchen makes the pizza</strong> (15 minutes)</li>
-                <li><strong>The pizza goes in the oven</strong> (12 minutes)</li>
-                <li><strong>Driver picks it up and delivers</strong> (20 minutes)</li>
-                <li><strong>You eat it</strong> (however long you want)</li>
-            </ol>
+                <p style="color: var(--text-secondary); margin: 20px 0;">A genius invents an AI that makes ordering <strong style="color: var(--accent-green);">100x faster</strong>!</p>
 
-            <p><strong>Total time: about 50 minutes.</strong></p>
+                <div class="pizza-result">
+                    <div class="result-card">
+                        <div class="result-label">Before AI</div>
+                        <div class="result-value before">50 min</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-label">After AI</div>
+                        <div class="result-value after">49 min</div>
+                        <div class="result-savings">Saved: ~1 minute (2%)</div>
+                    </div>
+                </div>
 
-            <p>Now, a genius invents an AI that makes ordering <strong>100x faster</strong>. Instead of taking 1 minute to browse the menu and customize your order, it takes 0.6 seconds. The AI knows what you want before you do!</p>
-
-            <p>🎉 Amazing! Revolutionary! 100x speedup!</p>
-
-            <p><strong>New total time: 49 minutes.</strong></p>
-
-            <p>Wait, what?</p>
-
-            <p>You saved... less than a minute. The pizza still needs to be made. It still needs to bake. The driver still needs to drive.</p>
-
-            <p><strong>The ordering step got 100x faster, but your pizza only arrives 2% sooner.</strong></p>
-
-            <div class="callout-box">
-                This is called the <strong>pipeline discount</strong>. And it's the single biggest thing limiting how fast AI can transform medicine.
+                <p style="color: var(--accent-orange); margin-top: 20px; font-weight: 600;">The ordering step got 100x faster, but your pizza only arrives 2% sooner.</p>
             </div>
 
-            <hr>
-
-            <h2><span class="emoji-header">⚗️</span>From Pizza to Proteins</h2>
-
-            <p>Let's look at what a scientist does when they want to understand a protein (the molecules that do basically everything in your body):</p>
-
-            <h3>The Old Way (Before AlphaFold)</h3>
-
-            <ol>
-                <li><strong>Grow the protein in bacteria</strong> - 3-6 months</li>
-                <li><strong>Purify it until it's clean</strong> - 1-2 months</li>
-                <li><strong>Crystallize it</strong> (like growing a microscopic diamond) - 2-12 months</li>
-                <li><strong>Shoot X-rays at it and collect data</strong> - 1-2 weeks</li>
-                <li><strong>Use computers to solve the structure</strong> - 1-4 weeks ← <em>THIS IS THE STEP AI SPEEDS UP</em></li>
-                <li><strong>Check if the computer was right</strong> - 1-2 months</li>
-                <li><strong>Figure out what it means biologically</strong> - 2-6 months</li>
-                <li><strong>Run experiments to test your ideas</strong> - 6-18 months</li>
-                <li><strong>Write it up and convince other scientists</strong> - 3-6 months</li>
-            </ol>
-
-            <p><strong>Total: About 3 years.</strong></p>
-
-            <h3>The New Way (With AlphaFold)</h3>
-
-            <p>AlphaFold is absolutely incredible. Step 5 used to take 1-4 weeks of complex computation. Now it takes <strong>minutes</strong>. That's roughly <strong>24x faster</strong>.</p>
-
-            <p>But look at all the other steps. Growing bacteria? Still takes months. The protein doesn't know there's an AI waiting for it. Experiments? Still take as long as chemistry takes. You can't email a molecule and ask it to hurry up.</p>
-
-            <p>So the <strong>24x speedup on step 5</strong> becomes about a <strong>9x speedup for the whole process</strong>.</p>
-
-            <p>That's still amazing! But it's not 24x.</p>
-
-            <blockquote>
-                <strong>The Pipeline Discount:</strong> The ratio between how fast one step gets and how fast the whole process gets. For structural biology, the discount is about 0.37 - meaning only 37% of AI's speedup actually shows up in faster science.
-            </blockquote>
-
-            <hr>
-
-            <h2><span class="emoji-header">🎮</span>The Video Game Loading Screen Analogy</h2>
-
-            <p>Here's another way to think about it.</p>
-
-            <p>Imagine you're playing a video game with these phases:</p>
-
-            <table>
-                <thead>
-                    <tr><th>Phase</th><th>Time</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Loading screen</td><td>30 seconds</td></tr>
-                    <tr><td>Tutorial you can't skip</td><td>5 minutes</td></tr>
-                    <tr><td>Actual gameplay</td><td>45 minutes</td></tr>
-                    <tr><td>Cutscenes you can't skip</td><td>10 minutes</td></tr>
-                    <tr><td><strong>Total</strong></td><td><strong>60 minutes</strong></td></tr>
-                </tbody>
-            </table>
-
-            <p>Now imagine someone invents an SSD that makes loading screens <strong>instant</strong> - a 1000x speedup!</p>
-
-            <p><strong>New total time: 59 minutes and 30 seconds.</strong></p>
-
-            <p>You barely notice. The tutorial is still 5 minutes. The cutscenes are still 10 minutes. The gameplay is still 45 minutes.</p>
-
-            <p>The loading screen was never the bottleneck.</p>
-
-            <p><strong>In biology, AI is like an insanely fast SSD.</strong> It makes the computational parts nearly instant. But the "unskippable cutscenes" - growing cells, running experiments, waiting for patients to respond to drugs - those don't care about Moore's Law.</p>
-
-            <hr>
-
-            <h2><span class="emoji-header">🚗</span>The Traffic Jam Analogy</h2>
-
-            <p>Let's try one more.</p>
-
-            <p>You're driving from New York to Los Angeles. The trip involves:</p>
-
-            <ul>
-                <li><strong>City traffic leaving NYC</strong> - 2 hours</li>
-                <li><strong>Highway driving</strong> - 35 hours</li>
-                <li><strong>Mountain passes (slow, winding)</strong> - 3 hours</li>
-                <li><strong>City traffic entering LA</strong> - 2 hours</li>
-                <li><strong>Total: 42 hours</strong></li>
-            </ul>
-
-            <p>Now imagine your car gets <strong>10x faster on the highway</strong>. You can drive 700 mph!</p>
-
-            <p>New highway time: 3.5 hours instead of 35 hours. Incredible!</p>
-
-            <p><strong>New total: 10.5 hours.</strong></p>
-
-            <p>That's a 4x speedup - not bad! But it's not 10x, because you're still stuck in NYC traffic, still crawling through the mountains, still sitting in LA traffic.</p>
-
-            <p><strong>The faster parts were never the slowest parts.</strong></p>
-
-            <p>This is exactly what's happening with AI in biology. AI made the "highway" parts of science super fast. But science also has a lot of "traffic jams" that AI can't fix.</p>
-
-            <hr>
-
-            <h2><span class="emoji-header">🔬</span>The Three Types of Science Work</h2>
-
-            <p>Let me introduce you to a framework that explains everything:</p>
-
-            <h3>🖥️ Bits-Only Work (AI Crushes This)</h3>
-
-            <p>This is work that happens entirely on computers:</p>
-            <ul>
-                <li>Predicting what a protein looks like</li>
-                <li>Scanning millions of possible drugs</li>
-                <li>Analyzing DNA sequences</li>
-                <li>Running simulations</li>
-            </ul>
-
-            <p><strong>AI can make this 10x, 100x, even 1000x faster.</strong> It's just math, after all.</p>
-
-            <h3>🔬 Hybrid Work (AI Helps, But Physics Still Matters)</h3>
-
-            <p>This is work where computers help guide physical experiments:</p>
-            <ul>
-                <li>Figuring out which experiments to run</li>
-                <li>Processing images from microscopes</li>
-                <li>Designing which molecules to make</li>
-            </ul>
-
-            <p><strong>AI can make this 2-5x faster</strong> by making smarter choices. But you still need to actually do the experiment.</p>
-
-            <h3>⚛️ Atoms-Bound Work (AI Can't Help Much)</h3>
-
-            <p>This is work where physical reality sets the pace:</p>
-            <ul>
-                <li>Cells dividing (takes however long biology takes)</li>
-                <li>Patients responding to drugs (can't speed up human bodies)</li>
-                <li>Chemical reactions (physics doesn't negotiate)</li>
-                <li>Clinical trials (years of waiting to see if people get better)</li>
-            </ul>
-
-            <p><strong>AI barely speeds this up.</strong> You can't send an email to a molecule and ask it to react faster.</p>
-
-            <hr>
-
-            <h2><span class="emoji-header">📊</span>The Brutal Math</h2>
-
-            <p>Here's what happens when you combine these types of work:</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Field</th>
-                        <th>AI Speed Boost</th>
-                        <th>Pipeline Discount</th>
-                        <th>Actual Speed Boost</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Structural Biology</td><td>24x</td><td>0.37</td><td>8.9x</td></tr>
-                    <tr><td>Protein Design</td><td>8x</td><td>0.69</td><td>5.5x</td></tr>
-                    <tr><td>Clinical Genomics</td><td>6x</td><td>0.70</td><td>4.2x</td></tr>
-                    <tr><td>Drug Discovery</td><td>3x</td><td>0.57</td><td>1.7x</td></tr>
-                    <tr><td>Materials Science</td><td>2000x</td><td>0.0007</td><td>1.3x</td></tr>
-                </tbody>
-            </table>
-
-            <p>Look at that last row. <strong>Materials science.</strong> AI can predict new materials 2000x faster than before. That's insane!</p>
-
-            <p>But the pipeline discount is 0.0007. Nearly zero.</p>
-
-            <p>Why? Because actually <em>making</em> those materials - mixing chemicals, heating them up, checking if they worked - is painfully slow. AI discovered 2.2 million new materials in one study. At current lab speeds, it would take <strong>2,200 years</strong> to actually make them all.</p>
-
-            <p>The computer finished the test in hours. The real-world work will outlive everyone reading this.</p>
-
-            <hr>
-
-            <h2><span class="emoji-header">💊</span>Why Drug Discovery Is So Slow</h2>
-
-            <p>Let's zoom in on the field that matters most for human health: drug discovery.</p>
-
-            <p>Here's how long it takes to create a new drug:</p>
-
-            <table>
-                <thead>
-                    <tr><th>Stage</th><th>Time</th><th>Can AI Help?</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Find a target (what to fix)</td><td>1-2 years</td><td>Yes - genomics helps</td></tr>
-                    <tr><td>Find a starting molecule</td><td>2-3 years</td><td>Yes - virtual screening</td></tr>
-                    <tr><td>Make it work better</td><td>Included above</td><td>Yes - predictions help</td></tr>
-                    <tr><td>Test in animals</td><td>1-2 years</td><td>A little</td></tr>
-                    <tr><td>Phase 1 trials (is it safe?)</td><td>1-2 years</td><td>Barely</td></tr>
-                    <tr><td>Phase 2 trials (does it work?)</td><td>2-3 years</td><td>No</td></tr>
-                    <tr><td>Phase 3 trials (prove it really works)</td><td>3-4 years</td><td>No</td></tr>
-                    <tr><td>FDA review</td><td>1-2 years</td><td>No</td></tr>
-                    <tr><td><strong>Total</strong></td><td><strong>12-18 years</strong></td><td>—</td></tr>
-                </tbody>
-            </table>
-
-            <p>See the problem?</p>
-
-            <p>AI can help with the early stuff (finding targets, screening molecules). That's maybe 25-30% of the time.</p>
-
-            <p>But clinical trials - testing drugs in actual humans - take up most of the time. And you <strong>cannot speed up biology.</strong> If a drug prevents heart attacks, you need to wait years to see if fewer people have heart attacks. There's no shortcut.</p>
-
-            <blockquote>
-                <strong>Key Insight:</strong> AI helps with the first 25% of drug development. It barely touches the last 75%.
-            </blockquote>
-
-            <p>That's why drug discovery only speeds up 1.7x despite all the AI hype. The bottleneck isn't computation - it's waiting for human bodies to respond to medicine.</p>
-
-            <hr>
-
-            <h2><span class="emoji-header">🤯</span>The Most Extreme Example: Materials Science</h2>
-
-            <p>This one blows my mind every time.</p>
-
-            <p><strong>GNoME</strong> is an AI system from DeepMind. In a single study, it predicted <strong>2.2 million new materials</strong> that should be stable. That's more than humanity had ever discovered in all of history, combined.</p>
-
-            <p>The computational prediction took <strong>hours</strong>.</p>
-
-            <p>The A-Lab at Lawrence Berkeley is one of the world's most advanced automated labs. It can make about <strong>1,000 new materials per year</strong>.</p>
-
-            <p>At that rate, it would take <strong>2,200 years</strong> to actually synthesize and test all of GNoME's predictions.</p>
-
-            <p>The AI finished its job in an afternoon. The physical world won't catch up until the year 4225.</p>
-
-            <blockquote>
-                <strong>This is the ultimate pipeline discount.</strong> 2000x computational speedup becomes 1.3x real-world speedup. The discount factor is 0.0007 - meaning 99.93% of the AI's speed advantage gets absorbed by physical reality.
-            </blockquote>
-
-            <hr>
-
-            <h2><span class="emoji-header">📈</span>So What Does This Actually Mean?</h2>
-
-            <p>Here's the actual prediction for how much AI will speed up biology by 2030:</p>
-
-            <p style="font-size: 1.5rem; font-weight: bold; text-align: center; color: #10b981;">2.8x faster overall</p>
+            <p>This is called the <strong>pipeline discount</strong>. And it's the single biggest thing limiting how fast AI can transform medicine.</p>
+
+            <h2><span class="section-emoji">⚗️</span> From Pizza to Proteins</h2>
+
+            <p>In structural biology, the same thing happens. AlphaFold is absolutely incredible—it predicts protein structures <strong>24x faster</strong>. But that's just one step in a long process:</p>
+
+            <!-- Interactive Speedup Slider -->
+            <div class="speedup-slider">
+                <div class="slider-header">
+                    <h4>🎮 Try it yourself: Adjust AI speedup</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">What happens when AI makes one step faster?</p>
+                </div>
+
+                <div class="slider-container">
+                    <span style="color: var(--text-muted);">1x</span>
+                    <input type="range" id="speedupSlider" min="1" max="100" value="24">
+                    <span class="slider-value" id="sliderValue">24x</span>
+                </div>
+
+                <div class="slider-results">
+                    <div class="slider-result-card">
+                        <div class="value" id="taskSpeedup">24x</div>
+                        <div class="label">Task Speedup</div>
+                    </div>
+                    <div class="slider-result-card">
+                        <div class="value" id="pipelineSpeedup">8.9x</div>
+                        <div class="label">Pipeline Speedup</div>
+                    </div>
+                    <div class="slider-result-card">
+                        <div class="value" id="discount">37%</div>
+                        <div class="label">Discount Factor</div>
+                    </div>
+                </div>
+
+                <p style="text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 0.9rem;">
+                    Notice: Even at 100x, the pipeline only speeds up ~10x. Physical steps can't be skipped!
+                </p>
+            </div>
+
+            <h2><span class="section-emoji">🎮</span> Three Analogies That Explain Everything</h2>
+
+            <div class="analogy-grid">
+                <div class="analogy-card">
+                    <div class="analogy-icon">💾</div>
+                    <div class="analogy-title">The Loading Screen</div>
+                    <div class="analogy-desc">A 1000x faster SSD saves you 30 seconds in a 60-minute game. The tutorial and cutscenes don't care about your hardware.</div>
+                </div>
+                <div class="analogy-card">
+                    <div class="analogy-icon">🚗</div>
+                    <div class="analogy-title">The Traffic Jam</div>
+                    <div class="analogy-desc">Your car can go 700 mph on the highway. But city traffic doesn't negotiate. NYC → LA is still limited by traffic, not top speed.</div>
+                </div>
+                <div class="analogy-card">
+                    <div class="analogy-icon">🏭</div>
+                    <div class="analogy-title">The Factory</div>
+                    <div class="analogy-desc">Designing a car 50x faster doesn't help when manufacturing, shipping, and assembly take months. Design was never the bottleneck.</div>
+                </div>
+            </div>
+
+            <h2><span class="section-emoji">🔬</span> The Three Types of Science Work</h2>
+
+            <div class="work-type-grid">
+                <div class="work-type-card">
+                    <div class="work-type-icon">🖥️</div>
+                    <div class="work-type-content">
+                        <h4>Bits-Only Work</h4>
+                        <p>Predicting proteins, scanning drugs, analyzing DNA. Pure computation. AI crushes this.</p>
+                    </div>
+                    <div class="work-type-speedup high">
+                        <div class="value">10-1000x</div>
+                        <div class="label">AI speedup</div>
+                    </div>
+                </div>
+
+                <div class="work-type-card">
+                    <div class="work-type-icon">🔬</div>
+                    <div class="work-type-content">
+                        <h4>Hybrid Work</h4>
+                        <p>Figuring out which experiments to run. AI helps make smarter choices, but you still do the experiment.</p>
+                    </div>
+                    <div class="work-type-speedup medium">
+                        <div class="value">2-5x</div>
+                        <div class="label">AI speedup</div>
+                    </div>
+                </div>
+
+                <div class="work-type-card">
+                    <div class="work-type-icon">⚛️</div>
+                    <div class="work-type-content">
+                        <h4>Atoms-Bound Work</h4>
+                        <p>Clinical trials, chemical reactions, cells dividing. Physics doesn't negotiate. AI can't speed this up.</p>
+                    </div>
+                    <div class="work-type-speedup low">
+                        <div class="value">~1x</div>
+                        <div class="label">AI speedup</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2><span class="section-emoji">📊</span> The Brutal Math</h2>
+
+            <div class="chart-container">
+                <div class="chart-title">AI Acceleration by Scientific Field</div>
+                <div class="chart-canvas-wrapper">
+                    <canvas id="fieldChart"></canvas>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <h4>The Materials Science Paradox</h4>
+                <p>GNoME predicted <strong>2.2 million new materials</strong> in hours. But labs can only make ~1,000 per year. It would take <strong>2,200 years</strong> to physically create them all. The computer finished in an afternoon; the real world won't catch up until the year 4225.</p>
+            </div>
+
+            <h2><span class="section-emoji">📈</span> So What Does This Actually Mean?</h2>
+
+            <div class="big-number">
+                <div class="value">2.8x</div>
+                <div class="label">Overall acceleration by 2030</div>
+            </div>
 
             <p>That sounds disappointing compared to "1000x" headlines. But let me reframe it.</p>
 
-            <h3>The "Compressed Century"</h3>
+            <p>2.8x acceleration means scientific progress that would have taken <strong>100 years</strong> will now take about <strong>35 years</strong>. That's <strong>64 years of human suffering prevented</strong>. Treatments that your grandkids would have gotten... you might get.</p>
 
-            <p>2.8x acceleration means that scientific progress that would have taken <strong>100 years</strong> will now take about <strong>35 years</strong>.</p>
+            <h2><span class="section-emoji">🔧</span> How Do We Go Faster?</h2>
 
-            <p>Think about that. We're compressing a century of discoveries into 35 years. That means treatments that your grandkids would have gotten... you might get.</p>
+            <p>If the bottleneck isn't AI... what is it? <strong>Physical infrastructure.</strong></p>
 
-            <p><strong>That's 64 years of human suffering prevented.</strong> Sixty-four years of diseases that won't kill people. Disabilities that won't limit lives. Mysteries that won't remain unsolved.</p>
+            <div class="chart-container">
+                <div class="chart-title">What Would Actually Speed Up Science</div>
+                <div class="chart-canvas-wrapper">
+                    <canvas id="solutionsChart"></canvas>
+                </div>
+            </div>
 
-            <p>2.8x might not sound like a lot. But it might be one of the most important developments in the history of science.</p>
-
-            <hr>
-
-            <h2><span class="emoji-header">🔧</span>How Do We Go Faster?</h2>
-
-            <p>If the bottleneck isn't AI... what is it? And can we fix it?</p>
-
-            <p><strong>Yes.</strong> Here's what would actually accelerate science:</p>
-
-            <h3>1. Build Robot Laboratories ($1-2 billion)</h3>
-
-            <p>Right now, humans do most lab work by hand. It's slow.</p>
-
-            <p>Imagine robot labs that run 24/7, doing thousands of experiments per week. These already exist as prototypes. We just need to build more of them.</p>
-
-            <p><strong>Impact:</strong> Could speed up materials science by 10-50x and help every field.</p>
-
-            <h3>2. Reform Clinical Trials (Mostly Free, Just Hard)</h3>
-
-            <p>Clinical trials take forever partly because of how they're designed. There are faster ways to do it:</p>
-            <ul>
-                <li>Adaptive trials that change based on early results</li>
-                <li>Using biomarkers instead of waiting for actual outcomes</li>
-                <li>International cooperation so trials don't need to be repeated in every country</li>
-            </ul>
-
-            <p><strong>Impact:</strong> Could cut drug development time by 30-50%.</p>
-
-            <h3>3. Build More Cryo-EM Facilities ($200-500 million)</h3>
-
-            <p>Cryo-EM is a microscope that can see protein structures. It's essential for validating what AI predicts. But there aren't enough of them.</p>
-
-            <p><strong>Impact:</strong> Lets structural biology actually use all the predictions AI generates.</p>
-
-            <hr>
-
-            <h2><span class="emoji-header">🤔</span>What Could Go Wrong?</h2>
-
-            <p>To be fair, there are risks:</p>
-
-            <ol>
-                <li><strong>AI-designed drugs might fail more often</strong> - If AI optimizes for the wrong things, drugs could fail in clinical trials at higher rates.</li>
-                <li><strong>Regulatory backlash</strong> - If something goes wrong with an AI-designed drug, regulators might get more cautious, slowing everything down.</li>
-                <li><strong>Garbage in, garbage out</strong> - AI learns from published research. About 50% of research doesn't replicate. AI might just generate wrong answers faster.</li>
-            </ol>
-
-            <p>But even accounting for these risks, the expected outcome is strongly positive.</p>
-
-            <hr>
-
-            <h2><span class="emoji-header">🎯</span>The Big Picture</h2>
-
-            <p>Here's what I want you to remember:</p>
-
-            <ol>
-                <li><strong>AI is incredibly powerful at the computational parts of science.</strong> Predictions that took years now take minutes. That's real and amazing.</li>
-                <li><strong>But science isn't just computation.</strong> It's also growing cells, running experiments, testing drugs in humans, and manufacturing materials. These things are "atoms-bound" - they run at the speed of physics, not the speed of computers.</li>
-                <li><strong>The "pipeline discount" explains the gap.</strong> A 24x computational speedup becomes a 9x real speedup (structural biology) or even a 1.3x real speedup (materials science). The more physical work a field requires, the smaller the AI boost.</li>
-                <li><strong>2.8x acceleration is still transformative.</strong> It means compressing a century of progress into 35 years. Your generation will see treatments that would otherwise have been developed for your grandchildren.</li>
-                <li><strong>The bottleneck is now the physical world, not computation.</strong> If we want to go faster, we need robot labs, better clinical trials, and more infrastructure - not just better AI.</li>
-            </ol>
-
-            <hr>
-
-            <h2><span class="emoji-header">💡</span>What Does This Mean For You?</h2>
+            <h2><span class="section-emoji">💡</span> What Does This Mean For You?</h2>
 
             <p>If you're thinking about careers in science or technology, here's what's valuable:</p>
 
-            <p><strong>Not just AI skills.</strong> Yes, machine learning is important. But the actual bottleneck is the physical-digital interface.</p>
-
-            <p><strong>Consider these fields:</strong></p>
-            <ul>
-                <li><strong>Lab automation engineering</strong> - Building robots that do experiments</li>
-                <li><strong>Bioprocess engineering</strong> - Making it easier to grow cells and make drugs</li>
-                <li><strong>Regulatory science</strong> - Designing better, faster clinical trials</li>
-                <li><strong>Computational-experimental hybrids</strong> - Scientists who can both code AND do benchwork</li>
-            </ul>
-
-            <p>The people who will make the biggest difference aren't just the AI experts. They're the people who can <strong>connect AI to the physical world</strong>.</p>
-
-            <hr>
-
-            <h2><span class="emoji-header">📝</span>Quick Summary</h2>
-
-            <div class="summary-table">
-                <table>
-                    <thead>
-                        <tr><th>Concept</th><th>Explanation</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><strong>Pipeline Discount</strong></td><td>The ratio between how fast one step gets and how fast the whole process gets</td></tr>
-                        <tr><td><strong>Bits-Only Work</strong></td><td>Computation - AI makes this 10-1000x faster</td></tr>
-                        <tr><td><strong>Atoms-Bound Work</strong></td><td>Physical experiments, clinical trials - AI barely helps</td></tr>
-                        <tr><td><strong>2.8x by 2030</strong></td><td>How much faster biology will actually move</td></tr>
-                        <tr><td><strong>64 Years</strong></td><td>Human suffering prevented by this acceleration</td></tr>
-                        <tr><td><strong>The Real Bottleneck</strong></td><td>Not AI capability - it's physical infrastructure and regulations</td></tr>
-                    </tbody>
-                </table>
+            <div class="career-grid">
+                <div class="career-card">
+                    <div class="career-icon">🤖</div>
+                    <div class="career-title">Lab Automation Engineering</div>
+                </div>
+                <div class="career-card">
+                    <div class="career-icon">🧬</div>
+                    <div class="career-title">Bioprocess Engineering</div>
+                </div>
+                <div class="career-card">
+                    <div class="career-icon">📋</div>
+                    <div class="career-title">Regulatory Science</div>
+                </div>
+                <div class="career-card">
+                    <div class="career-icon">🔬</div>
+                    <div class="career-title">Computational-Experimental Hybrid</div>
+                </div>
             </div>
 
-            <hr>
+            <p>The heroes of the next scientific revolution won't just be AI experts. They'll be the people who can <strong>connect AI to the physical world</strong>.</p>
 
+            <!-- Quiz Section -->
             <div class="quiz-section">
                 <h3>🧪 Test Your Understanding</h3>
 
-                <p><strong>Question 1:</strong> If an AI can screen drug candidates 100x faster, why don't we get drugs 100x faster?</p>
+                <div class="quiz-question">
+                    <p>Q1: If AI can screen drug candidates 100x faster, why don't we get drugs 100x faster?</p>
+                    <button class="quiz-btn" onclick="toggleAnswer('a1')">Show Answer</button>
+                    <div class="quiz-answer" id="a1">
+                        Because drug screening is only one step in a long pipeline. Clinical trials (testing in humans) take 8-10 years and can't be sped up by AI. The 100x speedup on screening might translate to only 1.5-2x speedup overall.
+                    </div>
+                </div>
 
-                <details>
-                    <summary>Click for answer</summary>
-                    <p>Because drug screening is only one step in a long pipeline. Clinical trials (testing in humans) take 8-10 years and can't be sped up by AI. The 100x speedup on screening might translate to only 1.5-2x speedup overall.</p>
-                </details>
+                <div class="quiz-question">
+                    <p>Q2: Why does materials science have such a tiny pipeline discount (0.0007)?</p>
+                    <button class="quiz-btn" onclick="toggleAnswer('a2')">Show Answer</button>
+                    <div class="quiz-answer" id="a2">
+                        Because AI can predict millions of materials instantly, but actually making them in a lab is extremely slow. The A-Lab can only synthesize ~1,000 materials per year. The bottleneck is entirely physical synthesis, not prediction.
+                    </div>
+                </div>
 
-                <p><strong>Question 2:</strong> Why does materials science have such a tiny pipeline discount (0.0007)?</p>
-
-                <details>
-                    <summary>Click for answer</summary>
-                    <p>Because AI can predict millions of materials instantly, but actually making them in a lab is extremely slow. The A-Lab can only synthesize ~1,000 materials per year. GNoME predicted 2.2 million - it would take 2,200 years to make them all. The bottleneck is entirely physical synthesis, not prediction.</p>
-                </details>
-
-                <p><strong>Question 3:</strong> What's more valuable for speeding up drug discovery - better AI or better clinical trial design?</p>
-
-                <details>
-                    <summary>Click for answer</summary>
-                    <p>Better clinical trial design. AI helps with the first 25-30% of drug development, but clinical trials dominate the timeline (60-70%). Regulatory innovation could have more impact than any AI improvement.</p>
-                </details>
+                <div class="quiz-question">
+                    <p>Q3: What's more valuable for speeding up drug discovery—better AI or better clinical trial design?</p>
+                    <button class="quiz-btn" onclick="toggleAnswer('a3')">Show Answer</button>
+                    <div class="quiz-answer" id="a3">
+                        Better clinical trial design. AI helps with the first 25-30% of drug development, but clinical trials dominate the timeline (60-70%). Regulatory innovation could have more impact than any AI improvement.
+                    </div>
+                </div>
             </div>
 
-            <hr>
-
-            <h2><span class="emoji-header">🌟</span>Final Thought</h2>
+            <h2><span class="section-emoji">🌟</span> Final Thought</h2>
 
             <p>The next time someone says "AI will cure cancer in 5 years," you now know the real answer:</p>
 
@@ -669,63 +919,117 @@
 
             <p>The bottleneck has shifted from "thinking" to "doing." From bits to atoms. From computation to physical reality.</p>
 
-            <p><strong>And that means the heroes of the next scientific revolution won't just be the AI researchers.</strong> They'll be the engineers who build robot labs. The regulators who design better trials. The scientists who can work at the boundary between the digital and physical worlds.</p>
-
-            <p style="font-size: 1.3rem; font-weight: 600; color: #10b981; text-align: center;">Maybe that's you.</p>
-
-            <hr>
-
-            <p><em>This explainer is based on the AI Research Acceleration Model v1.1. For the full technical analysis, see "<a href="post1_pipeline_problem.html">The 2.8x Ceiling: What Really Limits AI's Impact on Biology.</a>"</em></p>
-
-            <hr>
-
-            <div class="glossary">
-                <h3>Glossary</h3>
-                <dl>
-                    <dt>AlphaFold</dt>
-                    <dd>AI system from DeepMind that predicts protein structures. Won the protein-folding problem that had stumped scientists for 50 years.</dd>
-
-                    <dt>Clinical Trial</dt>
-                    <dd>Testing drugs in human patients. Happens in phases (1, 2, 3) and takes 6-10 years total.</dd>
-
-                    <dt>Cryo-EM</dt>
-                    <dd>A type of microscope that can see molecular structures. Uses frozen samples and electron beams.</dd>
-
-                    <dt>GNoME</dt>
-                    <dd>AI system from DeepMind that predicts stable materials. Found 2.2 million candidates in one study.</dd>
-
-                    <dt>Pipeline</dt>
-                    <dd>The sequence of steps needed to go from idea to result in science.</dd>
-
-                    <dt>Pipeline Discount</dt>
-                    <dd>The ratio showing how much of a single-step speedup actually translates to overall speedup.</dd>
-
-                    <dt>Protein</dt>
-                    <dd>Molecules that do most of the work in living things. Made of amino acids.</dd>
-
-                    <dt>Structural Biology</dt>
-                    <dd>Field that studies the 3D shapes of biological molecules.</dd>
-                </dl>
-            </div>
+            <p style="font-size: 1.3rem; font-weight: 600; color: var(--accent-green); text-align: center; margin-top: 40px;">Maybe that's you—the one who builds the bridge.</p>
         </div>
+
+        <!-- Footer -->
+        <footer class="article-footer">
+            <p>Based on the AI Research Acceleration Model v1.1 | <a href="blog.html">Back to Blog</a> | <a href="post1_pipeline_problem.html">Read Technical Analysis</a></p>
+        </footer>
     </article>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>AI-Accelerated Biological Discovery Model v1.1 | <a href="https://github.com/jang1563/ai-bio-model">GitHub</a></p>
-        </div>
-    </footer>
-
     <script>
-        const navToggle = document.getElementById('navToggle');
-        const navLinks = document.getElementById('navLinks');
-        if (navToggle && navLinks) {
-            navToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                navToggle.classList.toggle('active');
-            });
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Speedup Slider
+        const slider = document.getElementById('speedupSlider');
+        slider.addEventListener('input', function() {
+            const task = parseInt(this.value);
+            document.getElementById('sliderValue').textContent = task + 'x';
+            document.getElementById('taskSpeedup').textContent = task + 'x';
+
+            // Calculate pipeline speedup (simplified model)
+            const otherStepsTime = 32; // months for other steps
+            const aiStepOriginal = 1; // month
+            const totalOriginal = otherStepsTime + aiStepOriginal;
+            const totalNew = otherStepsTime + (aiStepOriginal / task);
+            const pipelineSpeedup = totalOriginal / totalNew;
+
+            document.getElementById('pipelineSpeedup').textContent = pipelineSpeedup.toFixed(1) + 'x';
+            document.getElementById('discount').textContent = Math.round((pipelineSpeedup / task) * 100) + '%';
+        });
+
+        // Quiz toggle
+        function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            answer.classList.toggle('show');
         }
+
+        // Field Chart
+        const fieldCtx = document.getElementById('fieldChart').getContext('2d');
+        new Chart(fieldCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Structural Biology', 'Protein Design', 'Clinical Genomics', 'Drug Discovery', 'Materials Science'],
+                datasets: [{
+                    label: 'Net Acceleration',
+                    data: [8.9, 5.5, 4.2, 1.7, 1.3],
+                    backgroundColor: ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b', '#ef4444'],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: { color: '#2a2a35' },
+                        ticks: { color: '#a0a0b0' }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { color: '#a0a0b0' }
+                    }
+                }
+            }
+        });
+
+        // Solutions Chart
+        const solCtx = document.getElementById('solutionsChart').getContext('2d');
+        new Chart(solCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Robot Labs ($1-2B)', 'Cryo-EM Facilities ($200-500M)', 'Clinical Trial Reform (Policy)'],
+                datasets: [{
+                    label: 'Potential Impact',
+                    data: [50, 15, 40],
+                    backgroundColor: ['#10b981', '#3b82f6', '#8b5cf6'],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#2a2a35' },
+                        ticks: {
+                            color: '#a0a0b0',
+                            callback: (val) => val + '% speedup'
+                        }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#a0a0b0' }
+                    }
+                }
+            }
+        });
     </script>
 </body>
 </html>
