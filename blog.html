@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - AI-Accelerated Biological Discovery</title>
+
+    <!-- SEO & Social -->
+    <meta name="description" content="Blog posts exploring the pipeline problem, AI acceleration limits, and the future of biological discovery.">
+    <meta name="keywords" content="AI, biology, drug discovery, pipeline problem, acceleration">
+    <meta name="author" content="AI Bio Acceleration Model Project">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .blog-hero {
+            padding: 120px 20px 60px;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            text-align: center;
+        }
+        .blog-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .blog-hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .blog-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: grid;
+            gap: 30px;
+        }
+        .blog-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        .blog-card-tag {
+            display: inline-block;
+            background: var(--accent-primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .blog-card-tag.student {
+            background: #10b981;
+        }
+        .blog-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        .blog-card h2 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .blog-card h2 a:hover {
+            color: var(--accent-primary);
+        }
+        .blog-card-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        .blog-card-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .blog-card-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        .blog-card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-primary);
+            font-weight: 500;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container" id="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">AI Bio Acceleration</a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#summary">Summary</a>
+                <a href="index.html#model">Model</a>
+                <a href="index.html#results">Results</a>
+                <a href="EXPLANATION_SIMPLE.html">Explainer</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="process.html">Process</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="blog-hero">
+        <h1>Blog</h1>
+        <p>Deep dives into the pipeline problem, AI acceleration limits, and the future of biological discovery</p>
+    </header>
+
+    <!-- Blog Grid -->
+    <main class="blog-grid">
+        <article class="blog-card">
+            <span class="blog-card-tag">Technical Analysis</span>
+            <h2><a href="post1_pipeline_problem.html">The 2.8x Ceiling: What Really Limits AI's Impact on Biology</a></h2>
+            <p class="blog-card-subtitle">Why 24x faster AI only yields 3x faster cures—and what we can do about it</p>
+            <p class="blog-card-description">
+                AI will accelerate biological research by roughly 2.8x by 2030—compressing what would have been a century of progress into approximately 35 years. But why isn't it faster? This essay explores the "pipeline problem" across five major domains of biological research.
+            </p>
+            <div class="blog-card-meta">
+                <span>📖 ~18 min read</span>
+                <span>🔬 Technical</span>
+            </div>
+            <a href="post1_pipeline_problem.html" class="read-more">
+                Read Article →
+            </a>
+        </article>
+
+        <article class="blog-card">
+            <span class="blog-card-tag student">Student Guide</span>
+            <h2><a href="post2_explainer_students.html">Why Can't AI Just Cure Everything Already?</a></h2>
+            <p class="blog-card-subtitle">A High School Guide to the Biggest Plot Twist in Science</p>
+            <p class="blog-card-description">
+                If AI is 24x faster at predicting protein structures, why don't we have 24x more treatments? This is the story of the biggest plot twist in modern science: why being 1000x faster at the thinking part doesn't mean we're 1000x faster at the doing part.
+            </p>
+            <div class="blog-card-meta">
+                <span>📖 ~15 min read</span>
+                <span>🎓 No biology degree required</span>
+            </div>
+            <a href="post2_explainer_students.html" class="read-more">
+                Read Article →
+            </a>
+        </article>
+
+        <article class="blog-card">
+            <span class="blog-card-tag" style="background: #8b5cf6;">Research Manuscript</span>
+            <h2><a href="manuscript.html">Quantifying AI-Driven Acceleration of Biological Research</a></h2>
+            <p class="blog-card-subtitle">A Multi-Domain Forecasting Model</p>
+            <p class="blog-card-description">
+                The full research manuscript presenting our validated forecasting model. Includes domain-specific projections, pipeline discount analysis, cross-domain spillover effects, scenario analysis, and policy implications.
+            </p>
+            <div class="blog-card-meta">
+                <span>📄 ~3,400 words</span>
+                <span>📊 10 figures</span>
+            </div>
+            <a href="manuscript.html" class="read-more">
+                Read Manuscript →
+            </a>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>AI-Accelerated Biological Discovery Model v1.1 | <a href="https://github.com/jang1563/ai-bio-model">GitHub</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
