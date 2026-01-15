@@ -799,35 +799,50 @@
             document.getElementById('progressBar').style.width = scrolled + '%';
         });
 
-        // Animated counters
-        const counters = document.querySelectorAll('.counter-value');
-        const speed = 200;
+        // Animated counters - fixed version
+        const animateCounter = (counter) => {
+            const target = parseFloat(counter.getAttribute('data-target'));
+            const isDecimal = target % 1 !== 0;
+            const duration = 2000; // 2 seconds
+            const startTime = performance.now();
 
-        const animateCounters = () => {
-            counters.forEach(counter => {
-                const target = parseFloat(counter.getAttribute('data-target'));
-                const count = parseFloat(counter.innerText);
-                const inc = target / speed;
+            const updateCounter = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
 
-                if (count < target) {
-                    counter.innerText = (count + inc).toFixed(target % 1 === 0 ? 0 : 1);
-                    setTimeout(animateCounters, 10);
+                // Ease out cubic
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = target * easeOut;
+
+                if (isDecimal) {
+                    counter.innerText = current.toFixed(1);
                 } else {
-                    counter.innerText = target % 1 === 0 ? target : target.toFixed(1);
+                    counter.innerText = Math.round(current);
                 }
-            });
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    // Ensure final value is exact
+                    counter.innerText = isDecimal ? target.toFixed(1) : target;
+                }
+            };
+
+            requestAnimationFrame(updateCounter);
         };
 
         // Start counter animation when in view
-        const observer = new IntersectionObserver((entries) => {
+        const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
+                    const counters = entry.target.querySelectorAll('.counter-value');
+                    counters.forEach(counter => animateCounter(counter));
+                    counterObserver.unobserve(entry.target);
                 }
             });
-        });
-        observer.observe(document.querySelector('.counter-section'));
+        }, { threshold: 0.5 });
+
+        counterObserver.observe(document.querySelector('.counter-section'));
 
         // Domain Chart
         const domainCtx = document.getElementById('domainChart').getContext('2d');
