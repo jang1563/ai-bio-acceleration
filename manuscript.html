@@ -8,11 +8,15 @@
     <!-- SEO & Social -->
     <meta name="description" content="A Multi-Domain Forecasting Model for AI-Driven Research Acceleration. Validated model projecting 2.8x acceleration by 2030.">
     <meta name="keywords" content="AI, biology, drug discovery, research acceleration, forecasting model, manuscript">
+    <meta property="og:title" content="AI-Driven Acceleration of Biological Research">
+    <meta property="og:description" content="Validated forecasting model projecting 2.8x acceleration by 2030 across five biological research domains.">
+    <meta property="og:type" content="article">
 
-    <!-- Chart.js -->
+    <!-- Chart.js with annotation plugin -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
 
-    <!-- Fonts -->
+    <!-- Fonts - async loading for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -23,8 +27,8 @@
             --bg-secondary: #12121a;
             --bg-card: #1a1a25;
             --text-primary: #e8e8ed;
-            --text-secondary: #a0a0b0;
-            --text-muted: #6b6b7b;
+            --text-secondary: #b8b8c8;
+            --text-muted: #8b8b9b;
             --accent-primary: #6366f1;
             --accent-secondary: #8b5cf6;
             --accent-success: #10b981;
@@ -44,6 +48,41 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
+        }
+
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            z-index: 1002;
+            transition: top 0.2s;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid white;
+            outline-offset: 2px;
+        }
+
+        /* Screen reader only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         /* Progress Bar */
@@ -86,20 +125,128 @@
             text-decoration: none;
         }
 
+        .nav-logo:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 4px;
+        }
+
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 10px;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
-            transition: color 0.2s;
+            padding: 12px 16px;
+            border-radius: 6px;
+            transition: color 0.2s, background 0.2s;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-links a:hover {
             color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .nav-links a:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+
+        .nav-links a.active {
+            color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* Mobile Navigation */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            background: none;
+            border: none;
+            border-radius: 6px;
+        }
+
+        .nav-hamburger:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+
+        .nav-hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: transform 0.2s;
+            display: block;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Model Link Banner */
+        .model-link-banner {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+            border: 1px solid var(--accent-primary);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .model-link-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .model-link-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .model-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+            min-height: 44px;
+        }
+
+        .model-link-btn:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        .model-link-btn:focus {
+            outline: 2px solid white;
+            outline-offset: 2px;
         }
 
         /* Manuscript Container */
@@ -118,11 +265,21 @@
             text-decoration: none;
             margin-bottom: 30px;
             font-size: 0.9rem;
-            transition: color 0.2s;
+            padding: 10px 14px;
+            margin-left: -14px;
+            border-radius: 6px;
+            transition: color 0.2s, background 0.2s;
+            min-height: 44px;
         }
 
         .back-to-blog:hover {
             color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .back-to-blog:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
         }
 
         /* Header */
@@ -136,9 +293,9 @@
             display: inline-block;
             background: var(--accent-primary);
             color: white;
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -176,10 +333,18 @@
         .stat-value {
             font-size: 2.5rem;
             font-weight: 700;
+            color: var(--accent-primary);
             background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        @supports not (-webkit-background-clip: text) {
+            .stat-value {
+                color: var(--accent-primary);
+                -webkit-text-fill-color: initial;
+            }
         }
 
         .stat-label {
@@ -192,7 +357,7 @@
         .abstract-box {
             background: var(--bg-secondary);
             border-left: 4px solid var(--accent-primary);
-            padding: 25px;
+            padding: 25px 30px 25px 25px;
             margin: 30px 0;
             border-radius: 0 12px 12px 0;
         }
@@ -204,17 +369,23 @@
         }
 
         .abstract-box p {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             line-height: 1.8;
+            opacity: 0.9;
         }
 
-        /* Content */
+        /* Content - Improved readability */
         .manuscript-content h2 {
             font-size: 1.6rem;
             margin-top: 50px;
             margin-bottom: 20px;
             padding-top: 30px;
             border-top: 1px solid var(--border-color);
+        }
+
+        .manuscript-content h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
         }
 
         .manuscript-content h3 {
@@ -226,17 +397,21 @@
 
         .manuscript-content p {
             margin-bottom: 1.5em;
-            color: var(--text-secondary);
+            color: var(--text-primary);
+            opacity: 0.9;
+            max-width: 70ch;
         }
 
         .manuscript-content strong {
             color: var(--text-primary);
+            opacity: 1;
         }
 
         .manuscript-content ul, .manuscript-content ol {
             margin-bottom: 1.5em;
             padding-left: 25px;
-            color: var(--text-secondary);
+            color: var(--text-primary);
+            opacity: 0.9;
         }
 
         .manuscript-content li {
@@ -249,7 +424,7 @@
             margin: 40px 0;
         }
 
-        /* Figure Container */
+        /* Figure Container with Accessibility */
         .figure-container {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -259,15 +434,15 @@
         }
 
         .figure-title {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--accent-primary);
             margin-bottom: 5px;
         }
 
         .figure-caption {
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
             margin-bottom: 20px;
         }
 
@@ -276,11 +451,18 @@
             height: 350px;
         }
 
+        /* Table Wrapper for Mobile Scroll */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+
         /* Interactive Table */
         .interactive-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            min-width: 500px;
         }
 
         .interactive-table th {
@@ -293,18 +475,34 @@
             border-bottom: 2px solid var(--accent-primary);
         }
 
+        .interactive-table th:nth-child(2),
+        .interactive-table th:nth-child(3) {
+            text-align: right;
+        }
+
         .interactive-table td {
             padding: 12px 15px;
             border-bottom: 1px solid var(--border-color);
             font-size: 0.9rem;
+            color: var(--text-primary);
         }
 
-        .interactive-table tr {
-            transition: background 0.2s;
+        .interactive-table td:nth-child(2),
+        .interactive-table td:nth-child(3) {
+            text-align: right;
+        }
+
+        .interactive-table tbody tr:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .interactive-table tr:hover {
             background: var(--bg-secondary);
+        }
+
+        .interactive-table tr:focus-within {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: -2px;
         }
 
         .bar-cell {
@@ -320,7 +518,6 @@
             background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
             border-radius: 4px;
             opacity: 0.3;
-            transition: width 0.5s ease;
         }
 
         .bar-value {
@@ -339,6 +536,12 @@
             text-align: center;
         }
 
+        .key-finding.primary {
+            border-width: 2px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%);
+            border-color: var(--accent-success);
+        }
+
         .key-finding-icon {
             font-size: 2rem;
             margin-bottom: 10px;
@@ -349,9 +552,14 @@
             font-size: 1.1rem;
         }
 
+        .key-finding.primary strong {
+            color: var(--accent-success);
+        }
+
         /* Spillover Network Visualization */
         .spillover-network {
             background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 30px;
             margin: 30px 0;
@@ -377,9 +585,15 @@
             cursor: pointer;
         }
 
-        .network-node:hover {
+        .network-node:hover,
+        .network-node:focus {
             border-color: var(--accent-primary);
             transform: scale(1.05);
+            outline: none;
+        }
+
+        .network-node:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
         }
 
         .network-node.highlight {
@@ -446,13 +660,20 @@
             cursor: pointer;
         }
 
-        .scenario-card:hover {
+        .scenario-card:hover,
+        .scenario-card:focus {
             transform: translateY(-5px);
             border-color: var(--accent-primary);
+            outline: none;
+        }
+
+        .scenario-card:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
         }
 
         .scenario-card.baseline {
             border-color: var(--accent-primary);
+            border-width: 2px;
             background: rgba(99, 102, 241, 0.1);
         }
 
@@ -555,9 +776,20 @@
         /* Policy ROI */
         .policy-roi-container {
             background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 25px;
             margin: 30px 0;
+        }
+
+        .roi-scale {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding: 0 45px 10px 45px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .roi-item {
@@ -583,11 +815,13 @@
             justify-content: center;
             font-weight: 700;
             font-size: 0.85rem;
+            flex-shrink: 0;
         }
 
         .roi-name {
             flex: 1;
             font-weight: 500;
+            min-width: 0;
         }
 
         .roi-bar-container {
@@ -596,13 +830,13 @@
             background: var(--bg-secondary);
             border-radius: 5px;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .roi-bar {
             height: 100%;
             background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
             border-radius: 5px;
-            transition: width 0.5s ease;
         }
 
         .roi-value {
@@ -610,6 +844,7 @@
             text-align: right;
             font-weight: 600;
             color: var(--accent-primary);
+            flex-shrink: 0;
         }
 
         /* References */
@@ -623,7 +858,7 @@
 
         .references-section li {
             margin-bottom: 12px;
-            color: var(--text-muted);
+            color: var(--text-secondary);
         }
 
         sup {
@@ -645,8 +880,46 @@
             text-decoration: none;
         }
 
-        /* Responsive */
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer a:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive - Tablet */
         @media (max-width: 768px) {
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 20px;
+                gap: 5px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
             .stats-banner {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -671,75 +944,202 @@
                 grid-template-columns: 1fr;
             }
 
-            .nav-links {
+            .chart-wrapper {
+                height: 300px;
+            }
+
+            .model-link-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Responsive - Mobile */
+        @media (max-width: 480px) {
+            .stats-banner {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .stat-value {
+                font-size: 1.75rem;
+            }
+
+            .scenario-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scenario-grid .scenario-card:nth-child(5) {
+                grid-column: auto;
+            }
+
+            .manuscript-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .meta-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .chart-wrapper {
+                height: 250px;
+            }
+
+            .roi-item {
+                flex-wrap: wrap;
+            }
+
+            .roi-bar-container {
+                width: 100%;
+                order: 3;
+                margin-top: 10px;
+            }
+
+            .roi-scale {
                 display: none;
             }
-        }
 
-        /* Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+            .network-diagram {
+                flex-direction: column;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            .spillover-arrow {
+                transform: rotate(90deg);
             }
         }
 
-        .animate-in {
-            animation: fadeInUp 0.6s ease forwards;
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .progress-bar {
+                transition: none;
+            }
+
+            .scenario-card,
+            .network-node,
+            .model-link-btn,
+            .back-to-blog,
+            .nav-links a {
+                transition: none;
+            }
+
+            .scenario-card:hover,
+            .network-node:hover {
+                transform: none;
+            }
+
+            .model-link-btn:hover {
+                transform: none;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav-container,
+            .progress-bar,
+            .skip-link,
+            .back-to-blog,
+            .model-link-btn {
+                display: none;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+
+            .manuscript-container {
+                padding: 0;
+                max-width: none;
+            }
+
+            .figure-container,
+            .spillover-network,
+            .policy-roi-container {
+                break-inside: avoid;
+                border: 1px solid #ccc;
+            }
+
+            .chart-wrapper {
+                height: auto;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Progress Bar -->
-    <div class="progress-bar" id="progressBar"></div>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 
     <!-- Navigation -->
-    <nav class="nav-container">
+    <nav class="nav-container" aria-label="Main navigation">
         <div class="nav-content">
             <a href="blog.html" class="nav-logo">AI Bio Blog</a>
-            <div class="nav-links">
-                <a href="blog.html">Blog Home</a>
-                <a href="post1_pipeline_problem.html">Technical Analysis</a>
-                <a href="post2_explainer_students.html">Student Guide</a>
-                <a href="manuscript.html" class="active">Manuscript</a>
+            <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks" role="menubar">
+                <a href="blog.html" role="menuitem">Blog Home</a>
+                <a href="post1_pipeline_problem.html" role="menuitem">Technical Analysis</a>
+                <a href="post2_explainer_students.html" role="menuitem">Student Guide</a>
+                <a href="manuscript.html" class="active" role="menuitem" aria-current="page">Manuscript</a>
             </div>
         </div>
     </nav>
 
-    <article class="manuscript-container">
-        <a href="blog.html" class="back-to-blog">← Back to Blog</a>
+    <article class="manuscript-container" id="main-content">
+        <a href="blog.html" class="back-to-blog" aria-label="Back to Blog Home">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M11 1L4 8l7 7" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+            Back to Blog
+        </a>
 
         <header class="manuscript-header">
             <span class="manuscript-tag">Research Manuscript</span>
             <h1>Quantifying AI-Driven Acceleration of Biological Research: A Multi-Domain Forecasting Model</h1>
             <div class="meta-info">
                 <span>~3,400 words</span>
-                <span>10 figures</span>
+                <span>6 figures</span>
                 <span>v1.1</span>
             </div>
         </header>
 
+        <!-- Model Link Banner -->
+        <div class="model-link-banner">
+            <div class="model-link-info">
+                <h3>Access the Model</h3>
+                <p>Explore the full AI Bio Acceleration Model with interactive visualizations and documentation.</p>
+            </div>
+            <a href="https://github.com/jang1563/ai-bio-acceleration" class="model-link-btn" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                View on GitHub
+            </a>
+        </div>
+
         <!-- Key Stats Banner -->
-        <div class="stats-banner">
+        <div class="stats-banner" role="region" aria-label="Key Statistics">
             <div class="stat-item">
-                <div class="stat-value" data-count="2.8">0</div>
+                <div class="stat-value" data-count="2.8" data-suffix="x">0</div>
                 <div class="stat-label">System Acceleration (2030)</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value" data-count="15">0</div>
+                <div class="stat-value" data-count="15" data-suffix="">0</div>
                 <div class="stat-label">Validated Cases</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value" data-count="0.21">0</div>
+                <div class="stat-value" data-count="0.21" data-suffix="">0</div>
                 <div class="stat-label">Mean Log Error</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value" data-count="2.1">0</div>
-                <div class="stat-label">Million Net Jobs</div>
+                <div class="stat-value" data-count="2.1" data-suffix="M">0</div>
+                <div class="stat-label">Net Jobs Created</div>
             </div>
         </div>
 
@@ -749,7 +1149,7 @@
         </div>
 
         <div class="manuscript-content">
-            <h2>Introduction</h2>
+            <h2 id="introduction">Introduction</h2>
 
             <p>The release of AlphaFold2 in 2021 marked a watershed moment for artificial intelligence in biology, solving a 50-year grand challenge in protein structure prediction with unprecedented accuracy<sup>1</sup>. Since then, AI systems have demonstrated remarkable capabilities across biological research: ESM-3 designs functional proteins from scratch<sup>2</sup>, GNoME predicts 2.2 million stable crystal structures<sup>3</sup>, and AlphaMissense classifies the pathogenicity of 71 million human variants<sup>4</sup>.</p>
 
@@ -765,75 +1165,77 @@
 
             <hr>
 
-            <h2>Results</h2>
+            <h2 id="results">Results</h2>
 
             <h3>Figure 1: Domain-Specific Acceleration Forecasts</h3>
 
-            <div class="figure-container">
-                <div class="figure-title">Figure 1. AI-driven research acceleration by domain (2030 projections)</div>
-                <div class="figure-caption">Horizontal bars show projected acceleration factors. Error bars indicate 90% confidence intervals. Structural biology leads while drug discovery and materials science are constrained by physical bottlenecks.</div>
+            <div class="figure-container" role="figure" aria-labelledby="fig1-title fig1-desc">
+                <div class="figure-title" id="fig1-title">Figure 1. AI-driven research acceleration by domain (2030 projections)</div>
+                <div class="figure-caption" id="fig1-desc">Horizontal bars show projected acceleration factors with 90% confidence intervals. Structural biology leads while drug discovery and materials science are constrained by physical bottlenecks.</div>
                 <div class="chart-wrapper">
-                    <canvas id="domainChart"></canvas>
+                    <canvas id="domainChart" role="img" aria-label="Bar chart showing domain acceleration: Structural Biology 8.9x, Protein Design 5.5x, Clinical Genomics 4.2x, Drug Discovery 1.7x, Materials Science 1.3x"></canvas>
                 </div>
             </div>
 
-            <table class="interactive-table">
-                <thead>
-                    <tr>
-                        <th>Domain</th>
-                        <th>Acceleration</th>
-                        <th>90% CI</th>
-                        <th>Key Constraint</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Structural Biology</td>
-                        <td class="bar-cell"><span class="bar-visual" style="width: 89%;"></span><span class="bar-value">8.9x</span></td>
-                        <td>5.8-13.7x</td>
-                        <td>Cryo-EM capacity</td>
-                    </tr>
-                    <tr>
-                        <td>Protein Design</td>
-                        <td class="bar-cell"><span class="bar-visual" style="width: 55%;"></span><span class="bar-value">5.5x</span></td>
-                        <td>3.9-7.7x</td>
-                        <td>Expression validation</td>
-                    </tr>
-                    <tr>
-                        <td>Clinical Genomics</td>
-                        <td class="bar-cell"><span class="bar-visual" style="width: 42%;"></span><span class="bar-value">4.2x</span></td>
-                        <td>3.0-5.9x</td>
-                        <td>Clinical adoption</td>
-                    </tr>
-                    <tr>
-                        <td>Drug Discovery</td>
-                        <td class="bar-cell"><span class="bar-visual" style="width: 17%;"></span><span class="bar-value">1.7x</span></td>
-                        <td>1.3-2.1x</td>
-                        <td>Clinical trials</td>
-                    </tr>
-                    <tr>
-                        <td>Materials Science</td>
-                        <td class="bar-cell"><span class="bar-visual" style="width: 13%;"></span><span class="bar-value">1.3x</span></td>
-                        <td>0.9-1.7x</td>
-                        <td>Synthesis throughput</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table class="interactive-table" aria-label="Domain acceleration data">
+                    <thead>
+                        <tr>
+                            <th scope="col">Domain</th>
+                            <th scope="col">Acceleration</th>
+                            <th scope="col">90% CI</th>
+                            <th scope="col">Key Constraint</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Structural Biology</td>
+                            <td class="bar-cell"><span class="bar-visual" style="width: 89%;"></span><span class="bar-value">8.9x</span></td>
+                            <td>5.8-13.7x</td>
+                            <td>Cryo-EM capacity</td>
+                        </tr>
+                        <tr>
+                            <td>Protein Design</td>
+                            <td class="bar-cell"><span class="bar-visual" style="width: 55%;"></span><span class="bar-value">5.5x</span></td>
+                            <td>3.9-7.7x</td>
+                            <td>Expression validation</td>
+                        </tr>
+                        <tr>
+                            <td>Clinical Genomics</td>
+                            <td class="bar-cell"><span class="bar-visual" style="width: 42%;"></span><span class="bar-value">4.2x</span></td>
+                            <td>3.0-5.9x</td>
+                            <td>Clinical adoption</td>
+                        </tr>
+                        <tr>
+                            <td>Drug Discovery</td>
+                            <td class="bar-cell"><span class="bar-visual" style="width: 17%;"></span><span class="bar-value">1.7x</span></td>
+                            <td>1.3-2.1x</td>
+                            <td>Clinical trials</td>
+                        </tr>
+                        <tr>
+                            <td>Materials Science</td>
+                            <td class="bar-cell"><span class="bar-visual" style="width: 13%;"></span><span class="bar-value">1.3x</span></td>
+                            <td>0.9-1.7x</td>
+                            <td>Synthesis throughput</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h3>Figure 2: The Pipeline Discount Effect</h3>
 
             <p>A key insight from our analysis is that task-level acceleration substantially overstates pipeline-level impact.</p>
 
-            <div class="figure-container">
-                <div class="figure-title">Figure 2. Task vs Pipeline Acceleration: The Discount Effect</div>
-                <div class="figure-caption">Blue bars show raw task acceleration from AI. Purple bars show actual pipeline acceleration after accounting for physical bottlenecks. Materials Science shows the most extreme discount.</div>
+            <div class="figure-container" role="figure" aria-labelledby="fig2-title fig2-desc">
+                <div class="figure-title" id="fig2-title">Figure 2. Task vs Pipeline Acceleration: The Discount Effect</div>
+                <div class="figure-caption" id="fig2-desc">Blue bars show raw task acceleration from AI. Purple bars show actual pipeline acceleration after accounting for physical bottlenecks. Materials Science shows the most extreme discount (2000x task vs 1.3x pipeline).</div>
                 <div class="chart-wrapper">
-                    <canvas id="discountChart"></canvas>
+                    <canvas id="discountChart" role="img" aria-label="Grouped bar chart comparing task acceleration versus pipeline acceleration across domains"></canvas>
                 </div>
             </div>
 
             <div class="key-finding">
-                <div class="key-finding-icon">!!</div>
+                <div class="key-finding-icon" aria-hidden="true">!!</div>
                 <strong>Physical bottlenecks dominate computational gains.</strong><br>
                 <span style="color: var(--text-secondary);">In materials science, infinite computational discovery capability is worthless without synthesis capacity to validate predictions.</span>
             </div>
@@ -842,39 +1244,39 @@
 
             <p>Research domains don't evolve in isolation. We quantify eight spillover pathways using the Griliches-Jaffe framework for R&D externalities<sup>5,6</sup>.</p>
 
-            <div class="spillover-network">
-                <div class="figure-title">Figure 3. Cross-domain spillover network</div>
-                <div class="figure-caption">Click nodes to see their spillover connections. Arrow thickness indicates spillover coefficient strength.</div>
+            <div class="spillover-network" role="figure" aria-labelledby="fig3-title fig3-desc">
+                <div class="figure-title" id="fig3-title">Figure 3. Cross-domain spillover network</div>
+                <div class="figure-caption" id="fig3-desc">Click or press Enter on nodes to highlight connections. Arrow indicates primary spillover pathway (25% coefficient).</div>
 
                 <div class="network-diagram">
-                    <div class="network-node highlight" id="node-struct" onclick="highlightNode('struct')">
+                    <div class="network-node highlight" id="node-struct" tabindex="0" role="button" aria-pressed="true" aria-label="Structural Biology, 8.9x acceleration">
                         <div class="node-name">Structural Biology</div>
                         <div class="node-accel">8.9x</div>
                     </div>
 
-                    <div class="spillover-arrow">
+                    <div class="spillover-arrow" aria-hidden="true">
                         <div class="arrow-line"></div>
                         <div class="arrow-label">25%</div>
                     </div>
 
-                    <div class="network-node" id="node-drug" onclick="highlightNode('drug')">
+                    <div class="network-node" id="node-drug" tabindex="0" role="button" aria-pressed="false" aria-label="Drug Discovery, 1.7x acceleration">
                         <div class="node-name">Drug Discovery</div>
                         <div class="node-accel">1.7x</div>
                     </div>
                 </div>
 
                 <div class="network-diagram" style="margin-top: 30px;">
-                    <div class="network-node" id="node-protein" onclick="highlightNode('protein')">
+                    <div class="network-node" id="node-protein" tabindex="0" role="button" aria-pressed="false" aria-label="Protein Design, 5.5x acceleration">
                         <div class="node-name">Protein Design</div>
                         <div class="node-accel">5.5x</div>
                     </div>
 
-                    <div class="network-node" id="node-genomics" onclick="highlightNode('genomics')">
+                    <div class="network-node" id="node-genomics" tabindex="0" role="button" aria-pressed="false" aria-label="Clinical Genomics, 4.2x acceleration">
                         <div class="node-name">Clinical Genomics</div>
                         <div class="node-accel">4.2x</div>
                     </div>
 
-                    <div class="network-node" id="node-materials" onclick="highlightNode('materials')">
+                    <div class="network-node" id="node-materials" tabindex="0" role="button" aria-pressed="false" aria-label="Materials Science, 1.3x acceleration">
                         <div class="node-name">Materials Science</div>
                         <div class="node-accel">1.3x</div>
                     </div>
@@ -883,10 +1285,10 @@
                 <div style="margin-top: 25px; padding: 15px; background: var(--bg-secondary); border-radius: 8px;">
                     <strong>Key Spillover Pathways:</strong>
                     <ul style="margin-top: 10px; color: var(--text-secondary);">
-                        <li>Structural Biology -> Drug Discovery: <strong style="color: var(--accent-primary);">25%</strong></li>
-                        <li>Structural Biology -> Protein Design: <strong style="color: var(--accent-primary);">30%</strong></li>
-                        <li>Protein Design -> Drug Discovery: <strong style="color: var(--accent-secondary);">12%</strong></li>
-                        <li>Clinical Genomics -> Drug Discovery: <strong style="color: var(--accent-secondary);">8%</strong></li>
+                        <li>Structural Biology → Drug Discovery: <strong style="color: var(--accent-primary);">25%</strong></li>
+                        <li>Structural Biology → Protein Design: <strong style="color: var(--accent-primary);">30%</strong></li>
+                        <li>Protein Design → Drug Discovery: <strong style="color: var(--accent-secondary);">12%</strong></li>
+                        <li>Clinical Genomics → Drug Discovery: <strong style="color: var(--accent-secondary);">8%</strong></li>
                     </ul>
                 </div>
             </div>
@@ -895,28 +1297,28 @@
 
             <p>We examine five scenarios spanning pessimistic to breakthrough conditions. Scenario probabilities derive from structured expert elicitation with 12 domain experts.</p>
 
-            <div class="scenario-grid">
-                <div class="scenario-card" onclick="selectScenario(this)">
+            <div class="scenario-grid" role="group" aria-label="Scenario selection">
+                <div class="scenario-card" tabindex="0" role="button" aria-pressed="false" aria-label="Pessimistic scenario: 1.7x acceleration, 10% probability">
                     <div class="scenario-name">Pessimistic</div>
                     <div class="scenario-accel">1.7x</div>
                     <div class="scenario-prob">10% probability</div>
                 </div>
-                <div class="scenario-card" onclick="selectScenario(this)">
+                <div class="scenario-card" tabindex="0" role="button" aria-pressed="false" aria-label="Conservative scenario: 2.2x acceleration, 20% probability">
                     <div class="scenario-name">Conservative</div>
                     <div class="scenario-accel">2.2x</div>
                     <div class="scenario-prob">20% probability</div>
                 </div>
-                <div class="scenario-card baseline" onclick="selectScenario(this)">
+                <div class="scenario-card baseline" tabindex="0" role="button" aria-pressed="true" aria-label="Baseline scenario: 2.8x acceleration, 40% probability, currently selected">
                     <div class="scenario-name">Baseline</div>
                     <div class="scenario-accel">2.8x</div>
                     <div class="scenario-prob">40% probability</div>
                 </div>
-                <div class="scenario-card" onclick="selectScenario(this)">
+                <div class="scenario-card" tabindex="0" role="button" aria-pressed="false" aria-label="Optimistic scenario: 3.5x acceleration, 20% probability">
                     <div class="scenario-name">Optimistic</div>
                     <div class="scenario-accel">3.5x</div>
                     <div class="scenario-prob">20% probability</div>
                 </div>
-                <div class="scenario-card" onclick="selectScenario(this)">
+                <div class="scenario-card" tabindex="0" role="button" aria-pressed="false" aria-label="Breakthrough scenario: 4.5x acceleration, 10% probability">
                     <div class="scenario-name">Breakthrough</div>
                     <div class="scenario-accel">4.5x</div>
                     <div class="scenario-prob">10% probability</div>
@@ -927,7 +1329,7 @@
 
             <p>We validate our model against 15 historical case studies from 2022-2024, spanning all five domains.</p>
 
-            <div class="validation-summary">
+            <div class="validation-summary" role="region" aria-label="Validation metrics">
                 <div class="validation-stat">
                     <div class="validation-number">0.21</div>
                     <div class="validation-label">Mean Log Error</div>
@@ -942,42 +1344,45 @@
                 </div>
             </div>
 
-            <div class="figure-container">
-                <div class="figure-title">Figure 5. Predicted vs Observed Acceleration</div>
-                <div class="figure-caption">Points near diagonal line indicate accurate predictions. All 15 cases fall within acceptable error band.</div>
+            <div class="figure-container" role="figure" aria-labelledby="fig5-title fig5-desc">
+                <div class="figure-title" id="fig5-title">Figure 5. Predicted vs Observed Acceleration</div>
+                <div class="figure-caption" id="fig5-desc">Scatter plot showing model predictions against observed values. Points near diagonal line indicate accurate predictions. Dashed line shows perfect calibration.</div>
                 <div class="chart-wrapper">
-                    <canvas id="validationChart"></canvas>
+                    <canvas id="validationChart" role="img" aria-label="Scatter plot of 15 validation cases showing predicted vs observed acceleration, with points clustered near the diagonal perfect-prediction line"></canvas>
                 </div>
             </div>
 
-            <h3>Figure 7: Workforce Implications</h3>
+            <h3>Figure 6: Workforce & Policy Implications</h3>
 
             <p>AI-driven acceleration reshapes research workforce demands.</p>
 
             <div class="workforce-visual">
                 <div class="workforce-box">
-                    <div class="workforce-icon">+</div>
+                    <div class="workforce-icon" aria-hidden="true">+</div>
                     <div class="workforce-number positive">+2.47M</div>
                     <div class="workforce-label">Jobs Created</div>
                 </div>
                 <div class="workforce-box">
-                    <div class="workforce-icon">-</div>
+                    <div class="workforce-icon" aria-hidden="true">-</div>
                     <div class="workforce-number negative">-370K</div>
                     <div class="workforce-label">Jobs Displaced</div>
                 </div>
             </div>
 
-            <div class="key-finding">
+            <div class="key-finding primary">
                 <strong>Net Impact: +2.1 Million Jobs by 2030</strong><br>
                 <span style="color: var(--text-secondary);">Job creation exceeds displacement through expanded research capacity and new AI-biology interface roles.</span>
             </div>
 
-            <h3>Figure 10: Policy Intervention ROI Analysis</h3>
+            <p>Return on investment for policy interventions, ranked by acceleration gain per $B invested:</p>
 
-            <p>Return on investment for policy interventions, ranked by acceleration gain per $B invested.</p>
-
-            <div class="policy-roi-container">
-                <div class="figure-title">Figure 10. Policy ROI Rankings</div>
+            <div class="policy-roi-container" role="figure" aria-labelledby="roi-title">
+                <div class="figure-title" id="roi-title">Policy ROI Rankings</div>
+                <div class="roi-scale">
+                    <span>0</span>
+                    <span>0.15/$B</span>
+                    <span>0.30/$B</span>
+                </div>
 
                 <div class="roi-item">
                     <div class="roi-rank">1</div>
@@ -1017,7 +1422,7 @@
 
             <hr>
 
-            <h2>Discussion</h2>
+            <h2 id="discussion">Discussion</h2>
 
             <p>Our model reveals a fundamental insight about AI in biology: <strong>physical bottlenecks dominate computational gains</strong>. The field has invested heavily in AI capability, but the binding constraints are increasingly wet lab throughput, clinical trial timelines, and synthesis capacity.</p>
 
@@ -1027,14 +1432,14 @@
 
             <hr>
 
-            <h2>Methods</h2>
+            <h2 id="methods">Methods</h2>
 
             <h3>Model Architecture</h3>
 
             <p>We model acceleration for domain <em>d</em> at year <em>t</em> as:</p>
 
-            <div class="equation">
-                A<sub>d</sub>(t) = B<sub>d</sub> x T<sub>d</sub>(t) x (1 + S<sub>d</sub>(t)) x M<sub>s</sub>
+            <div class="equation" role="math" aria-label="A sub d of t equals B sub d times T sub d of t times one plus S sub d of t times M sub s">
+                A<sub>d</sub>(t) = B<sub>d</sub> × T<sub>d</sub>(t) × (1 + S<sub>d</sub>(t)) × M<sub>s</sub>
             </div>
 
             <p>where B<sub>d</sub> is base acceleration, T<sub>d</sub>(t) is time evolution (logistic growth), S<sub>d</sub>(t) is cross-domain spillover, and M<sub>s</sub> is scenario modifier.</p>
@@ -1046,7 +1451,7 @@
             <hr>
 
             <div class="references-section">
-                <h2>References</h2>
+                <h2 id="references">References</h2>
                 <ol>
                     <li>Jumper, J. et al. Highly accurate protein structure prediction with AlphaFold. <em>Nature</em> 596, 583-589 (2021).</li>
                     <li>Hayes, T. et al. Simulating 500 million years of evolution with a language model. <em>Science</em> (2024).</li>
@@ -1064,31 +1469,52 @@
 
             <hr>
 
-            <p style="font-size: 0.9rem; color: var(--text-muted); text-align: center;"><em>Word count: ~3,400 (main text) | Display items: 10 figures | Version 1.1</em></p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); text-align: center;"><em>Word count: ~3,400 (main text) | Display items: 6 figures | Version 1.1</em></p>
         </div>
     </article>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>AI-Accelerated Biological Discovery Model v1.1 | <a href="https://github.com/jang1563/ai-bio-acceleration">GitHub</a></p>
+        <p>AI-Accelerated Biological Discovery Model v1.1</p>
+        <div class="footer-links">
+            <a href="https://github.com/jang1563/ai-bio-acceleration" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+            <span aria-hidden="true">|</span>
+            <a href="blog.html">Blog Home</a>
+            <span aria-hidden="true">|</span>
+            <a href="index.html">Main Site</a>
+        </div>
     </footer>
 
     <script>
+        // Mobile Navigation Toggle
+        const navHamburger = document.getElementById('navHamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        navHamburger.addEventListener('click', () => {
+            const isExpanded = navHamburger.getAttribute('aria-expanded') === 'true';
+            navHamburger.setAttribute('aria-expanded', !isExpanded);
+            navHamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
         // Progress Bar
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
-            document.getElementById('progressBar').style.width = scrolled + '%';
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = scrolled + '%';
+            progressBar.setAttribute('aria-valuenow', Math.round(scrolled));
         });
 
-        // Animated Counters
+        // Animated Counters with improved logic
         const observerOptions = { threshold: 0.5 };
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const el = entry.target;
                     const target = parseFloat(el.dataset.count);
+                    const suffix = el.dataset.suffix || '';
                     const isDecimal = target % 1 !== 0;
                     let current = 0;
                     const increment = target / 50;
@@ -1098,13 +1524,20 @@
                             current = target;
                             clearInterval(timer);
                         }
-                        el.textContent = isDecimal ? current.toFixed(2) : Math.round(current);
-                        if (el.dataset.count === '2.8' || el.dataset.count === '2.1') {
-                            el.textContent = current.toFixed(1) + 'x';
-                        } else if (el.dataset.count === '0.21') {
-                            el.textContent = current.toFixed(2);
-                        } else if (el.dataset.count === '2.1') {
-                            el.textContent = '+' + current.toFixed(1) + 'M';
+
+                        let display;
+                        if (isDecimal) {
+                            display = current.toFixed(current >= target ? (target === 0.21 ? 2 : 1) : 2);
+                        } else {
+                            display = Math.round(current);
+                        }
+
+                        if (suffix === 'M') {
+                            el.textContent = '+' + display + 'M';
+                        } else if (suffix === 'x') {
+                            el.textContent = display + 'x';
+                        } else {
+                            el.textContent = display;
                         }
                     }, 30);
                     counterObserver.unobserve(el);
@@ -1114,7 +1547,7 @@
 
         document.querySelectorAll('.stat-value').forEach(el => counterObserver.observe(el));
 
-        // Domain Acceleration Chart
+        // Domain Acceleration Chart with Error Bars
         const domainCtx = document.getElementById('domainChart').getContext('2d');
         new Chart(domainCtx, {
             type: 'bar',
@@ -1128,14 +1561,14 @@
                         'rgba(139, 92, 246, 0.8)',
                         'rgba(16, 185, 129, 0.8)',
                         'rgba(245, 158, 11, 0.8)',
-                        'rgba(239, 68, 68, 0.8)'
+                        'rgba(107, 114, 128, 0.8)'
                     ],
                     borderColor: [
                         'rgb(99, 102, 241)',
                         'rgb(139, 92, 246)',
                         'rgb(16, 185, 129)',
                         'rgb(245, 158, 11)',
-                        'rgb(239, 68, 68)'
+                        'rgb(107, 114, 128)'
                     ],
                     borderWidth: 2,
                     borderRadius: 8
@@ -1149,16 +1582,20 @@
                     legend: { display: false },
                     tooltip: {
                         callbacks: {
-                            label: (ctx) => ctx.raw + 'x acceleration'
+                            label: (ctx) => {
+                                const ci = ['5.8-13.7x', '3.9-7.7x', '3.0-5.9x', '1.3-2.1x', '0.9-1.7x'];
+                                return `${ctx.raw}x (90% CI: ${ci[ctx.dataIndex]})`;
+                            }
                         }
                     }
                 },
                 scales: {
                     x: {
                         beginAtZero: true,
-                        max: 12,
+                        max: 15,
                         grid: { color: 'rgba(255,255,255,0.1)' },
-                        ticks: { color: '#a0a0b0' }
+                        ticks: { color: '#b8b8c8' },
+                        title: { display: true, text: 'Acceleration Factor', color: '#b8b8c8' }
                     },
                     y: {
                         grid: { display: false },
@@ -1216,7 +1653,8 @@
                     y: {
                         beginAtZero: true,
                         grid: { color: 'rgba(255,255,255,0.1)' },
-                        ticks: { color: '#a0a0b0' }
+                        ticks: { color: '#b8b8c8' },
+                        title: { display: true, text: 'Acceleration Factor', color: '#b8b8c8' }
                     },
                     x: {
                         grid: { display: false },
@@ -1226,7 +1664,7 @@
             }
         });
 
-        // Validation Scatter Chart
+        // Validation Scatter Chart with Diagonal Line
         const validationCtx = document.getElementById('validationChart').getContext('2d');
         new Chart(validationCtx, {
             type: 'scatter',
@@ -1266,6 +1704,27 @@
                         callbacks: {
                             label: (ctx) => `${ctx.raw.label}: Predicted ${ctx.raw.x}x, Observed ${ctx.raw.y}x`
                         }
+                    },
+                    annotation: {
+                        annotations: {
+                            diagonalLine: {
+                                type: 'line',
+                                xMin: 0,
+                                xMax: 10,
+                                yMin: 0,
+                                yMax: 10,
+                                borderColor: 'rgba(255, 255, 255, 0.4)',
+                                borderWidth: 2,
+                                borderDash: [6, 4],
+                                label: {
+                                    display: true,
+                                    content: 'Perfect Prediction',
+                                    position: 'end',
+                                    color: 'rgba(255, 255, 255, 0.6)',
+                                    font: { size: 10 }
+                                }
+                            }
+                        }
                     }
                 },
                 scales: {
@@ -1274,49 +1733,63 @@
                         min: 0,
                         max: 10,
                         grid: { color: 'rgba(255,255,255,0.1)' },
-                        ticks: { color: '#a0a0b0' }
+                        ticks: { color: '#b8b8c8' }
                     },
                     y: {
                         title: { display: true, text: 'Observed Acceleration', color: '#e8e8ed' },
                         min: 0,
                         max: 10,
                         grid: { color: 'rgba(255,255,255,0.1)' },
-                        ticks: { color: '#a0a0b0' }
+                        ticks: { color: '#b8b8c8' }
                     }
                 }
             }
         });
 
-        // Add diagonal reference line
-        const validationChart = Chart.getChart('validationChart');
-        if (validationChart) {
-            validationChart.options.plugins.annotation = {
-                annotations: {
-                    line1: {
-                        type: 'line',
-                        xMin: 0,
-                        xMax: 10,
-                        yMin: 0,
-                        yMax: 10,
-                        borderColor: 'rgba(255,255,255,0.3)',
-                        borderWidth: 2,
-                        borderDash: [5, 5]
-                    }
-                }
-            };
-        }
-
-        // Spillover Network Interaction
+        // Spillover Network Interaction with Keyboard Support
         function highlightNode(nodeId) {
-            document.querySelectorAll('.network-node').forEach(n => n.classList.remove('highlight'));
-            document.getElementById('node-' + nodeId).classList.add('highlight');
+            document.querySelectorAll('.network-node').forEach(n => {
+                n.classList.remove('highlight');
+                n.setAttribute('aria-pressed', 'false');
+            });
+            const node = document.getElementById('node-' + nodeId);
+            node.classList.add('highlight');
+            node.setAttribute('aria-pressed', 'true');
         }
 
-        // Scenario Card Selection
+        document.querySelectorAll('.network-node').forEach(node => {
+            node.addEventListener('click', () => {
+                const nodeId = node.id.replace('node-', '');
+                highlightNode(nodeId);
+            });
+            node.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const nodeId = node.id.replace('node-', '');
+                    highlightNode(nodeId);
+                }
+            });
+        });
+
+        // Scenario Card Selection with Keyboard Support
         function selectScenario(card) {
-            document.querySelectorAll('.scenario-card').forEach(c => c.classList.remove('baseline'));
+            document.querySelectorAll('.scenario-card').forEach(c => {
+                c.classList.remove('baseline');
+                c.setAttribute('aria-pressed', 'false');
+            });
             card.classList.add('baseline');
+            card.setAttribute('aria-pressed', 'true');
         }
+
+        document.querySelectorAll('.scenario-card').forEach(card => {
+            card.addEventListener('click', () => selectScenario(card));
+            card.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectScenario(card);
+                }
+            });
+        });
     </script>
 </body>
 </html>
