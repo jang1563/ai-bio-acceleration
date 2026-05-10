@@ -109,7 +109,7 @@ MIT License - See main repository LICENSE file.
 ```bibtex
 @misc{aibiomodel2026,
   title = {AI-Accelerated Biological Discovery: A Quantitative Analysis},
-  author = {AI Bio Acceleration Model Project},
+  author = {Kim, JangKeun},
   year = {2026},
   url = {https://ai-bio-acceleration.github.io}
 }
